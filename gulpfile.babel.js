@@ -16,7 +16,7 @@ import data from 'gulp-data';
 import fs from 'fs';
 import path from 'path';
 import cacheBust from 'gulp-cache-bust';
-import tailwindcss from 'tailwindcss';
+import tailwindcss from '@tailwindcss/postcss';
 import autoprefixer from 'autoprefixer';
 
 // Modificar la configuración del compilador Sass
@@ -70,7 +70,7 @@ gulp.task('sass', () => {
             loadPaths: ['node_modules']
         }).on('error', sass.logError))
         .pipe(postcss([
-            tailwindcss(),
+            tailwindcss,
             autoprefixer(),
             cssnano({
                 preset: ['default', {

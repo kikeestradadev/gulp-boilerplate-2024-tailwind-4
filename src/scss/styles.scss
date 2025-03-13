@@ -1,18 +1,12 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+
 @import "libraries/libraries";
 @import "media-queries/media-queries";
-@layer base {
-	@import "layout/layout";
-	@import "layout/fonts";
-	@import "hacks/hacks";
-}
+@import "layout/layout";
+@import "layout/fonts";
+@import "hacks/hacks";
+@import "core-modules/core-modules";
+@import "internal-modules/internal-modules";
 
-@layer components {
-	@import "core-modules/core-modules";
-	@import "internal-modules/internal-modules";
-}
-@layer utilities {
-	@import "hacks/utilities";
-}
+@import "hacks/utilities";
