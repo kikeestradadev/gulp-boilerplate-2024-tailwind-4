@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "libraries/libraries";
+@import "media-queries/media-queries";
+@layer base {
+	@import "layout/layout";
+	@import "layout/fonts";
+	@import "hacks/hacks";
+}
+
+@layer components {
+	@import "core-modules/core-modules";
+	@import "internal-modules/internal-modules";
+}
+@layer utilities {
+	@import "hacks/utilities";
+}

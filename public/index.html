@@ -1,0 +1,438 @@
+
+<!--mixins imported from myStylkeGuide--><!DOCTYPE html>
+<html class="no-js" lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <!-- Charset-->
+    <meta charset="utf-8">
+    <!-- Viewport (para asegurar la adaptabilidad en dispositivos móviles)-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- X-UA-Compatible (para IE Edge, si no necesitas compatibilidad con IE, puedes omitirlo)-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <!-- Apple-specific meta tags (para aplicaciones web móviles)-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <!-- PWA tags-->
+    <meta name="theme-color" content="#0096D9">
+    <link rel="shortcut icon" type="image/png" href="./assets/img/icon_1024.png">
+    <link rel="apple-touch-icon" href="./assets/img/icon_1024.png">
+    <!-- Mobile optimization tags-->
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <!-- SEO - Descripción del sitio-->
+    <meta name="description" content="Breve descripción del sitio web que ayuda en el SEO.">
+    <!-- Autor del contenido-->
+    <meta name="author" content="Nombre del autor o empresa">
+    <!-- Open Graph (para compartir en redes sociales)-->
+    <meta property="og:title" content="Título de la página">
+    <meta property="og:description" content="Descripción breve para redes sociales">
+    <meta property="og:image" content="./assets/img/og-image.jpg">
+    <meta property="og:url" content="https://www.tusitio.com">
+    <!-- Twitter Card (optimización para Twitter)-->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@tuusuario">
+    <meta name="twitter:title" content="Título de la página">
+    <meta name="twitter:description" content="Descripción breve para Twitter">
+    <meta name="twitter:image" content="./assets/img/twitter-image.jpg">
+    <!-- Seguridad - Asegurar la conexión HTTPS-->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <!-- Cache control-->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?t=1741795016150">
+    <title>Home | Layouts</title>
+  </head>
+  <body class="home" itemscope itemtype="http://schema.org/WebPage">
+    <section class="main-container">
+      <div class="container">
+        <div class="flex flex-col l:flex-row gap-[40px] mb-[40px]">
+          <div class="order-2 l:order-1 w-full l:w-[200px] min-h-32"> 
+            <ul class="flex flex-col gap-2 p-4 bg-gray-100 rounded-lg shadow-md list-none sticky top-0 z-10">
+              <li class="hover:bg-gray-200 rounded transition-colors"><a class="block px-4 py-2 text-gray-700 hover:text-blue-600 no-underline hover:no-underline" href="#component-1">component-1</a></li>
+              <li class="hover:bg-gray-200 rounded transition-colors"><a class="block px-4 py-2 text-gray-700 hover:text-blue-600 no-underline hover:no-underline" href="#component-2">component-2</a></li>
+              <li class="hover:bg-gray-200 rounded transition-colors"><a class="block px-4 py-2 text-gray-700 hover:text-blue-600 no-underline hover:no-underline" href="#component-3">component-3</a></li>
+              <li class="hover:bg-gray-200 rounded transition-colors"><a class="block px-4 py-2 text-gray-700 hover:text-blue-600 no-underline hover:no-underline" href="#component-4">component-4</a></li>
+              <li class="hover:bg-gray-200 rounded transition-colors"><a class="block px-4 py-2 text-gray-700 hover:text-blue-600 no-underline hover:no-underline" href="#component-5">component-5</a></li>
+              <li class="hover:bg-gray-200 rounded transition-colors"><a class="block px-4 py-2 text-gray-700 hover:text-blue-600 no-underline hover:no-underline" href="#component-6">component-6</a></li>
+              <li class="hover:bg-gray-200 rounded transition-colors"><a class="block px-4 py-2 text-gray-700 hover:text-blue-600 no-underline hover:no-underline" href="#component-7">component-7</a></li>
+              <li class="hover:bg-gray-200 rounded transition-colors"><a class="block px-4 py-2 text-gray-700 hover:text-blue-600 no-underline hover:no-underline" href="#component-8">component-8</a></li>
+              <li class="hover:bg-gray-200 rounded transition-colors"><a class="block px-4 py-2 text-gray-700 hover:text-blue-600 no-underline hover:no-underline" href="#component-9">component-9</a></li>
+              <li class="hover:bg-gray-200 rounded transition-colors"><a class="block px-4 py-2 text-gray-700 hover:text-blue-600 no-underline hover:no-underline" href="#component-10">component-10</a></li>
+            </ul>
+          </div>
+          <div class="order-1 l:order-2 w-full l:flex-1 min-h-32"> 
+            <div class="flex flex-col gap-[40px] mb-[40px]" id="component-1">
+              <h2 class="m-0">Component 1 </h2>
+              <div>
+                <button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out" type="button">Button</button>
+              </div>
+              <div><pre><code class="language-html"># Hola
+- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+</code></pre>
+
+              </div>
+            </div>
+            <div class="flex flex-col gap-[40px] mb-[40px]" id="component-2">
+              <h2 class="m-0">Component 2</h2>
+              <div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out" type="button">Button</button>
+              </div>
+              <div><pre><code class="language-html">&lt;a class=&quot;button&quot;&gt;.button.first-color&lt;/a&gt;
+&lt;a class=&quot;button second-color&quot;&gt;.button.second-color&lt;/a&gt;
+&lt;a class=&quot;button third-color&quot;&gt;.button.third-color&lt;/a&gt;
+&lt;a class=&quot;button accent-color&quot;&gt;.button.accent-color&lt;/a&gt;
+&lt;a class=&quot;button dark-color&quot;&gt;.button.dark-color&lt;/a&gt;
+&lt;a class=&quot;button text-color&quot;&gt;.button.text-color&lt;/a&gt;
+&lt;a class=&quot;button light-color&quot;&gt;.button.light-color&lt;/a&gt;
+</code></pre>
+
+              </div>
+            </div>
+            <div class="flex flex-col gap-[40px] mb-[40px]" id="component-3">
+              <h2 class="m-0">Component 3</h2>
+              <div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out" type="button">Button</button>
+              </div>
+              <div><pre><code class="language-javascript">alert('Hola Mundo')
+</code></pre>
+
+              </div>
+            </div>
+            <div class="flex flex-col gap-[40px] mb-[40px]" id="component-4">
+              <h2 class="m-0">Component 4</h2>
+              <div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out" type="button">Button</button>
+              </div>
+              <div><pre><code class="language-css">body{
+	background: red;
+}
+</code></pre>
+
+              </div>
+            </div>
+            <div class="flex flex-col gap-[40px] mb-[40px]" id="component-5">
+              <h2 class="m-0">Component 5</h2>
+              <div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out" type="button">Button</button>
+              </div>
+              <div><pre><code class="language-html"># Hola
+- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+</code></pre>
+
+              </div>
+            </div>
+            <div class="flex flex-col gap-[40px] mb-[40px]" id="component-6">
+              <h2 class="m-0">Component 6</h2>
+              <div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out" type="button">Button) Button</button>
+              </div>
+              <div><pre><code class="language-html">&lt;a class=&quot;button&quot;&gt;.button.first-color&lt;/a&gt;
+&lt;a class=&quot;button second-color&quot;&gt;.button.second-color&lt;/a&gt;
+&lt;a class=&quot;button third-color&quot;&gt;.button.third-color&lt;/a&gt;
+&lt;a class=&quot;button accent-color&quot;&gt;.button.accent-color&lt;/a&gt;
+&lt;a class=&quot;button dark-color&quot;&gt;.button.dark-color&lt;/a&gt;
+&lt;a class=&quot;button text-color&quot;&gt;.button.text-color&lt;/a&gt;
+&lt;a class=&quot;button light-color&quot;&gt;.button.light-color&lt;/a&gt;
+</code></pre>
+
+              </div>
+            </div>
+            <div class="flex flex-col gap-[40px] mb-[40px]" id="component-7">
+              <h2 class="m-0">Component 7</h2>
+              <div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out" type="button">Button</button>
+              </div>
+              <div><pre><code class="language-javascript">alert('Hola Mundo')
+</code></pre>
+
+              </div>
+            </div>
+            <div class="flex flex-col gap-[40px] mb-[40px]" id="component-8">
+              <h2 class="m-0">Component 8</h2>
+              <div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out" type="button">Button</button>
+              </div>
+              <div><pre><code class="language-css">body{
+	background: red;
+}
+</code></pre>
+
+              </div>
+            </div>
+            <div class="flex flex-col gap-[40px] mb-[40px]" id="component-9">
+              <h2 class="m-0">Component 9</h2>
+              <div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out" type="button">Button</button>
+              </div>
+              <div><pre><code class="language-html"># Hola
+- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+</code></pre>
+
+              </div>
+            </div>
+            <div class="flex flex-col gap-[40px] mb-[40px]" id="component-10">
+              <h2 class="m-0">Component 10</h2>
+              <div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out" type="button">Button</button>
+              </div>
+              <div><pre><code class="language-html">&lt;a class=&quot;button&quot;&gt;.button.first-color&lt;/a&gt;
+&lt;a class=&quot;button second-color&quot;&gt;.button.second-color&lt;/a&gt;
+&lt;a class=&quot;button third-color&quot;&gt;.button.third-color&lt;/a&gt;
+&lt;a class=&quot;button accent-color&quot;&gt;.button.accent-color&lt;/a&gt;
+&lt;a class=&quot;button dark-color&quot;&gt;.button.dark-color&lt;/a&gt;
+&lt;a class=&quot;button text-color&quot;&gt;.button.text-color&lt;/a&gt;
+&lt;a class=&quot;button light-color&quot;&gt;.button.light-color&lt;/a&gt;
+
+</code></pre>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="main-container border border-[steelblue]"> 
+      <div class="container border border-[tomato]"> 
+        <h1 class="core-module-style">Flex</h1>
+        <div class="flex flex-wrap">
+          <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 p-3">
+            <div class="bg-[red] h-32 flex items-center justify-center"><span><b>Core Module1</b></span></div>
+          </div>
+          <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 p-3">
+            <div class="bg-[red] h-32 flex items-center justify-center"><span><b>Core Module2</b></span></div>
+          </div>
+          <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 p-3">
+            <div class="bg-[red] h-32 flex items-center justify-center"><span><b>Core Module3</b></span></div>
+          </div>
+          <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 p-3">
+            <div class="bg-[red] h-32 flex items-center justify-center"><span><b>Core Module4</b></span></div>
+          </div>
+          <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 p-3">
+            <div class="bg-[red] h-32 flex items-center justify-center"><span><b>Core Module5</b></span></div>
+          </div>
+          <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 p-3">
+            <div class="bg-[red] h-32 flex items-center justify-center"><span><b>Core Module6</b></span></div>
+          </div>
+          <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 p-3">
+            <div class="bg-[red] h-32 flex items-center justify-center"><span><b>Core Module7</b></span></div>
+          </div>
+          <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 p-3">
+            <div class="bg-[red] h-32 flex items-center justify-center"><span><b>Core Module8</b></span></div>
+          </div>
+          <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 p-3">
+            <div class="bg-[red] h-32 flex items-center justify-center"><span><b>Core Module9</b></span></div>
+          </div>
+          <div class="w-full sm:w-1/2 m:w-1/3 l:w-1/4 lg:w-1/5 xl:w-1/6 p-3">
+            <div class="bg-[red] h-32 flex items-center justify-center"><span><b>Core Module10</b></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="main-container border border-[steelblue]"> 
+      <div class="container  border border-[tomato]"> 
+        <h2 class="internal-module-style">grid</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 m:grid-cols-3 l:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-5">
+          <div class="bg-red-300 h-32 flex items-center justify-center"><span><b>Internal Module1</b></span></div>
+          <div class="bg-red-300 h-32 flex items-center justify-center"><span><b>Internal Module2</b></span></div>
+          <div class="bg-red-300 h-32 flex items-center justify-center"><span><b>Internal Module3</b></span></div>
+          <div class="bg-red-300 h-32 flex items-center justify-center"><span><b>Internal Module4</b></span></div>
+          <div class="bg-red-300 h-32 flex items-center justify-center"><span><b>Internal Module5</b></span></div>
+          <div class="bg-red-300 h-32 flex items-center justify-center"><span><b>Internal Module6</b></span></div>
+          <div class="bg-red-300 h-32 flex items-center justify-center"><span><b>Internal Module7</b></span></div>
+          <div class="bg-red-300 h-32 flex items-center justify-center"><span><b>Internal Module8</b></span></div>
+          <div class="bg-red-300 h-32 flex items-center justify-center"><span><b>Internal Module9</b></span></div>
+          <div class="bg-red-300 h-32 flex items-center justify-center"><span><b>Internal Module10</b></span></div>
+        </div>
+      </div>
+    </section>
+    <section class="main-container border border-[steelblue]"> 
+      <div class="container  border border-[tomato]"> 
+        <h2>side bar</h2>
+        <div class="flex flex-col l:flex-row">
+          <div class="order-2 l:order-1 w-full l:w-[400px] bg-gray-300 h-32">first Div</div>
+          <div class="order-1 l:order-2 w-full l:flex-1 bg-gray-200 h-32">Second Div</div>
+        </div>
+      </div>
+    </section>
+    <section class="main-container border border-[steelblue]"> 
+      <div class="container  border border-[tomato]"> 
+        <table>
+          <thead>
+            <tr>
+              <th>lorem1</th>
+              <th>lorem2</th>
+              <th>lorem3</th>
+              <th>lorem4</th>
+              <th>lorem5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>lorem1</td>
+              <td>lorem2</td>
+              <td>lorem3</td>
+              <td>lorem4</td>
+              <td>lorem5</td>
+            </tr>
+            <tr>
+              <td>lorem1</td>
+              <td>lorem2</td>
+              <td>lorem3</td>
+              <td>lorem4</td>
+              <td>lorem5</td>
+            </tr>
+            <tr>
+              <td>lorem1</td>
+              <td>lorem2</td>
+              <td>lorem3</td>
+              <td>lorem4</td>
+              <td>lorem5</td>
+            </tr>
+            <tr>
+              <td>lorem1</td>
+              <td>lorem2</td>
+              <td>lorem3</td>
+              <td>lorem4</td>
+              <td>lorem5</td>
+            </tr>
+            <tr>
+              <td>lorem1</td>
+              <td>lorem2</td>
+              <td>lorem3</td>
+              <td>lorem4</td>
+              <td>lorem5</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul>
+          <li>lorem1</li>
+          <li>lorem2</li>
+          <li>lorem3</li>
+          <li>lorem4</li>
+          <li>lorem5</li>
+        </ul>
+        <ol>
+          <li>lorem1</li>
+          <li>lorem2</li>
+          <li>lorem3</li>
+          <li>lorem4</li>
+          <li>lorem5</li>
+        </ol>
+      </div>
+    </section>
+    <section class="main-container border border-[steelblue]"> 
+      <div class="container  border border-[tomato]"> 
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi,
+          dolorem autem maiores quis dolor, reprehenderit delectus quia dolore,
+          incidunt obcaecati sequi labore hic? Soluta doloremque vitae explicabo
+          assumenda fugit tenetur.
+        </p>
+        <p></p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi,
+        dolorem autem maiores quis dolor, reprehenderit delectus quia dolore,
+        incidunt obcaecati sequi labore hic? Soluta doloremque vitae explicabo
+        assumenda fugit tenetur.
+      </div>
+    </section>
+    <section class="main-container border border-[steelblue]"> 
+      <div class="container  border border-[tomato]"> 
+            <div><img src="images/img4.jpg" style="width:100px">
+              <p>slider_item_1</p>
+            </div>
+            <div><img src="images/img2.jpg" style="width:100px">
+              <p>slider_item_2</p>
+            </div>
+            <div><img src="images/img3.jpg" style="width:100px">
+              <p>slider_item_3</p>
+            </div>
+            <div><img src="images/img4.jpg" style="width:100px">
+              <p>slider_item_4</p>
+            </div>
+            <div><img src="images/img4.jpg" style="width:100px">
+              <p>example2 - item 1</p>
+              <p>cat1</p>
+              <p>cat2</p>
+            </div>
+            <div><img src="images/img2.jpg" style="width:100px">
+              <p>example2 - item 2</p>
+              <p>cat1</p>
+              <p>cat2</p>
+            </div>
+            <div><img src="images/img3.jpg" style="width:100px">
+              <p>example2 - item 3</p>
+              <p>cat1</p>
+              <p>cat2</p>
+            </div>
+            <div><img src="images/img4.jpg" style="width:100px">
+              <p>example2 - item 4</p>
+              <p>cat1</p>
+              <p>cat2</p>
+            </div>
+      </div>
+    </section>
+    <section class="main-container border border-[steelblue]"> 
+      <div class="container  border border-[tomato]"> 
+        <h1>Write Markdown in the html file</h1><ul>
+<li>Lorem ipsum dolor sit amet consectetur adipisicing <code>elit</code>.</li>
+<li>Lorem ipsum dolor sit amet consectetur adipisicing <code>elit</code>.</li>
+<li>Lorem ipsum dolor sit amet consectetur adipisicing <code>elit</code>.</li>
+<li>Lorem ipsum dolor sit amet consectetur adipisicing <code>elit</code>.</li>
+</ul>
+
+        <h1>Write Markdown in the html file (html)</h1><pre><code class="language-html">	&lt;!DOCTYPE html&gt;
+	&lt;html lang=&quot;en&quot;&gt;
+	&lt;head&gt;
+		&lt;title&gt;Pug&lt;/title&gt;
+		&lt;script type=&quot;text/javascript&quot;&gt;
+			foo = true;
+			bar = function () {};
+			if (foo) { bar(1 + 5) }
+		&lt;/script&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h1&gt;Pug - node template engine&lt;/h1&gt;
+		&lt;div id=&quot;container&quot; class=&quot;col&quot;&gt;
+		&lt;p&gt;You are amazing&lt;/p&gt;
+		&lt;p&gt; Lorem ipsum.&lt;/p&gt;
+		&lt;/div&gt;
+	&lt;/body&gt;
+	&lt;/html&gt;
+</code></pre>
+
+        <h1>Importing Markdown files in the html</h1><h1>This is a Markdown Example</h1>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+<pre><code class="language-html">&lt;a class=&quot;button&quot;&gt;.button.first-color&lt;/a&gt;
+&lt;a class=&quot;button second-color&quot;&gt;.button.second-color&lt;/a&gt;
+&lt;a class=&quot;button third-color&quot;&gt;.button.third-color&lt;/a&gt;
+&lt;a class=&quot;button accent-color&quot;&gt;.button.accent-color&lt;/a&gt;
+&lt;a class=&quot;button dark-color&quot;&gt;.button.dark-color&lt;/a&gt;
+&lt;a class=&quot;button text-color&quot;&gt;.button.text-color&lt;/a&gt;
+&lt;a class=&quot;button light-color&quot;&gt;.button.light-color&lt;/a&gt;
+
+</code></pre>
+<pre><code class="language-javascript">alert('Hola Mundo')
+
+</code></pre>
+<pre><code class="language-css">body{
+	background: red;
+}
+</code></pre>
+
+      </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="index.js?t=1741795016150"></script>
+  </body>
+</html>
