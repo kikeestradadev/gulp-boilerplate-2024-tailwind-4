@@ -134,10 +134,10 @@ table th {
 	}
 }
 
-a {
-	text-decoration : none;  
-	&:hover { text-decoration : underline }
-}
+// a {
+// 	text-decoration : none;  
+// 	&:hover { text-decoration : underline }
+// }
 
 img {
 	max-width : 100%;
@@ -145,15 +145,15 @@ img {
 }
 
 
-ol, ul {
-	display: block;
-	margin-block: 1em;
-	margin-inline: 0;
-	padding-inline-start: 40px;
-}
-ol {
-	list-style-type: decimal;
-}
-ul {
-	list-style-type: disc;
-}
+// ol, ul {
+// 	display: block;
+// 	margin-block: 1em;
+// 	margin-inline: 0;
+// 	padding-inline-start: 40px;
+// }
+// ol {
+// 	list-style-type: decimal;
+// }
+// ul {
+// 	list-style-type: disc;
+// }

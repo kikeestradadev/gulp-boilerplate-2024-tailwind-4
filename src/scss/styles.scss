@@ -1,12 +1,35 @@
 @import "tailwindcss";
-
-
 @import "libraries/libraries";
 @import "media-queries/media-queries";
-@import "layout/layout";
-@import "layout/fonts";
-@import "hacks/hacks";
-@import "core-modules/core-modules";
-@import "internal-modules/internal-modules";
 
-@import "hacks/utilities";
+
+@theme {
+	--breakpoint-sm: initial;
+	--breakpoint-md: initial;
+	--breakpoint-lg: initial;
+	--breakpoint-xl: initial;
+	--breakpoint-2xl: initial;
+
+	--breakpoint-s: 0;
+	--breakpoint-sm: 480px;
+	--breakpoint-m: 640px;
+	--breakpoint-l: 960px;
+	--breakpoint-lg: 1280px;
+	--breakpoint-xl: 1600px;
+	--breakpoint-xxl: 1900px;
+  }
+@layer base {
+	@import "layout/fonts";
+	@import "layout/layout";
+	@import "hacks/hacks";
+}
+
+@layer components {
+	@import "layout/theme";
+	@import "core-modules/core-modules";
+	@import "internal-modules/internal-modules";
+}
+
+@layer utilities {
+	@import "hacks/utilities";
+}

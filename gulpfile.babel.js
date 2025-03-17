@@ -3,7 +3,7 @@ import plumber from 'gulp-plumber';
 import pug from 'gulp-pug';
 import browserSync from 'browser-sync';
 import gulpSass from 'gulp-sass';
-import sassCompiler from 'sass';
+import * as sassCompiler from 'sass';
 import postcss from 'gulp-postcss';
 import cssnano from 'cssnano';
 import browserify from 'browserify';
