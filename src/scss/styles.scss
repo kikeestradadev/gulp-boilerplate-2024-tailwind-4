@@ -1,19 +1,17 @@
 @import "tailwindcss";
-
 @import "libraries/libraries";
 @import "media-queries/media-queries";
-@layer base {	
-	@import "config/fonts";
-	@import "config/layout";
-	@import "config/theme";
-
+@layer base {
+	@import "layout/theme";
+	@import "layout/layout";
+	@import "layout/fonts";
+	@import "hacks/hacks";
 }
 
 @layer components {
 	@import "core-modules/core-modules";
 	@import "internal-modules/internal-modules";
 }
-
 @layer utilities {
 	@import "hacks/utilities";
 }
