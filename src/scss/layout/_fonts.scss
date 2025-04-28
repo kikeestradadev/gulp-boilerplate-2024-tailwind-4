@@ -1,11 +1,5 @@
 :root {
-	--header-color: #1F2024;
-	--paragraph-color: #1F2024;
-}
-
-h1, h2, h3, h4, h5, h6 {
-	color: var(--header-color);
-	margin-bottom: 30px;
+	--text-color: #1F2024;
 }
 
 // Default text styles
@@ -13,13 +7,16 @@ html, body {
 	font-family: 'Montserrat', sans-serif;
 }
 
-h1 {
+:is(h1, h2, h3, h4, h5, h6) {
+	color: var(--text-color);
 	font-style: normal;
-	font-variant: normal;
 	font-weight: 600;
+	font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
 	font-size: 32px;
 	line-height: 40px;
-	font-family: 'Montserrat', sans-serif; 
 	letter-spacing: -0.5px;
 	@screen l {
 		font-size: 51px;
@@ -29,11 +26,8 @@ h1 {
 }
 
 h2 {
-	font-style: normal;
-	font-weight: 600;
 	font-size: 29px;
 	line-height: 35px;
-	font-family: 'Montserrat', sans-serif;
 	letter-spacing: -0.58px;
 	@screen l{
 		font-size: 41px;
@@ -43,11 +37,8 @@ h2 {
 }
 
 h3 {
-	font-style: normal;
-	font-weight: 600;
 	font-size: 24px;
 	line-height: 29px;
-	font-family: 'Montserrat', sans-serif;
 	letter-spacing: -0.48px;
 	@screen l{
 		font-size: 27px;
@@ -57,11 +48,8 @@ h3 {
 }
 
 h4 {
-	font-style: normal;
-	font-weight: 600;
 	font-size: 20px;
 	line-height: 28px;
-	font-family: 'Montserrat', sans-serif;
 	letter-spacing: -0.4px;
 	@screen l{
 		font-size: 23px;
@@ -71,11 +59,8 @@ h4 {
 }
 
 h5 {
-	font-style: normal;
-	font-weight: 600;
 	font-size: 17px;
 	line-height: 27px;
-	font-family: 'Montserrat', sans-serif;
 	letter-spacing: -0.34px;
 	@screen l{
 		font-size: 19px;
@@ -85,11 +70,8 @@ h5 {
 }
 
 h6 {
-	font-style: normal;
-	font-weight: 600;
 	font-size: 14px;
 	line-height: 25px;
-	font-family: 'Montserrat', sans-serif;
 	letter-spacing: -0.28px;
 	@screen l{
 		font-size: 15px;
@@ -102,7 +84,7 @@ p{
 	margin-bottom: 20px;
 }
 
-p,span, a, ul li, ol li, table td {
+:is(p, span, a, ul li, ol li, table td, table th) {
 	font-style: normal;
 	font-variant: normal;
 	font-weight: normal;
@@ -118,20 +100,8 @@ p,span, a, ul li, ol li, table td {
 	}
 }
 
-table th {
-	font-style: normal;
-	font-variant: normal;
+:is(table th) {
 	font-weight: bold;
-	font-size: 15px;
-	line-height: 27px;
-	font-family: 'Montserrat', sans-serif;
-	letter-spacing: 0px;
-	--paragraph-color: #1F2024;
-	@screen l{
-		font-size: 16px;
-		line-height: 22px;
-		letter-spacing: 0px;
-	}
 }
 
 a {

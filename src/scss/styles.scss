@@ -1,6 +1,11 @@
 @import "tailwindcss";
+
+
+// @layer theme base, components, utilities
+
 @import "libraries/libraries";
 @import "media-queries/media-queries";
+@import "hacks/utilities";
 @layer base {
 	@import "layout/theme";
 	@import "layout/layout";
@@ -13,5 +18,5 @@
 	@import "internal-modules/internal-modules";
 }
 @layer utilities {
-	@import "hacks/utilities";
+	// Custom utilities can go here
 }

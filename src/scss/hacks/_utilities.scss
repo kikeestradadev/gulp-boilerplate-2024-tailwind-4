@@ -1,4 +1,4 @@
-.main-container{
+@utility main-container{
 	width: 100%;
 	max-width: 3500px;
 	margin: 0 auto;
@@ -7,7 +7,7 @@
 		padding: 0 0;
 	}
 }
-.container{
+@utility container{
 	width: 100%;
 	max-width: 1600px;
 	margin: 0 auto;
