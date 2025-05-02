@@ -1,4 +1,4 @@
 const internalModule = () => {
-	console.log('Hola internal Module'); 
+	console.log('Hola internal Module');
 };
-export default internalModule 
+export default internalModule;
