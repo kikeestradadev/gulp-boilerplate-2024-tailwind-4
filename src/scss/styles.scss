@@ -7,9 +7,3 @@
 @use "hacks/hacks" as *;
 @use "components/components" as *; 
 @use "hacks/utilities" as *;
-
-@include from(l){
-	body{
-		background: red;
-	}
-}
