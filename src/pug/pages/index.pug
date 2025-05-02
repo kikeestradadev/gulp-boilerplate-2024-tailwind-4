@@ -39,20 +39,24 @@ block body-container
 			
 					//- Contenido principal
 					div(class='order-1 lg:order-2 w-full lg:flex-1 min-h-32')
-						include ../core-components/style-guide-components/component-1.pug
-						include ../core-components/style-guide-components/component-2.pug
-						include ../core-components/style-guide-components/component-3.pug
-						include ../core-components/style-guide-components/component-4.pug
-						include ../core-components/style-guide-components/component-5.pug
-						include ../core-components/style-guide-components/component-6.pug
-						include ../core-components/style-guide-components/component-7.pug
-						include ../core-components/style-guide-components/component-8.pug
-						include ../core-components/style-guide-components/component-9.pug
-						include ../core-components/style-guide-components/component-10.pug
-		include ../core-components/core-module
-		include ../components/internal-module
+						include ../components/style-guide-components/component-1.pug
+						include ../components/style-guide-components/component-2.pug
+						include ../components/style-guide-components/component-3.pug
+						include ../components/style-guide-components/component-4.pug
+						include ../components/style-guide-components/component-5.pug
+						include ../components/style-guide-components/component-6.pug
+						include ../components/style-guide-components/component-7.pug
+						include ../components/style-guide-components/component-8.pug
+						include ../components/style-guide-components/component-9.pug
+						include ../components/style-guide-components/component-10.pug
+		include ../components/flex-module
+		include ../components/grid-module
+		include ../components/sidebar-module
+		include ../components/table-module
+		include ../components/list-module
+		include ../components/text-module
 		include ../components/json-data
-		include ../components/markdown
+		include ../components/markdown 
 block scripts
 	script.
 		const sideMenu = document.getElementById('sideMenu');

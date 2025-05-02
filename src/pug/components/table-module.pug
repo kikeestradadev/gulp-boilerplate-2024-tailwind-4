@@ -1,0 +1,14 @@
+section(class="main-container border border-[steelblue]") 
+	div(class="container  border border-[tomato]") 
+		table
+			thead
+				tr
+					-for(let i = 1; i<=5; i++)
+						th lorem
+							| #{i}
+			tbody
+				-for(let i = 1; i<=5; i++)
+					tr
+						-for(let i = 1; i<=5; i++)
+							td lorem
+								| #{i}
