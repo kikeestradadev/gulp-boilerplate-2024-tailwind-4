@@ -1,4 +1,6 @@
 @use 'sass:map';
+@use 'sass:meta';
+
 $breakpoints: (
     s     : 0, 
     sm    : 480px, 
@@ -9,17 +11,26 @@ $breakpoints: (
     xxl   : 1800px, 
     xxxl  : 1920px, 
 );
+
 @function get-value($breakpoint) {
-    @if type-of($breakpoint) == number {
+    // Si el breakpoint es un número, lo devolvemos directamente
+    @if meta.type-of($breakpoint) == number {
         @return $breakpoint;
     }
     
-    $value: map.get($breakpoints, $breakpoint);
-    @if $value == null {
-        @error 'El breakpoint #{$breakpoint} no está definido en $breakpoints';
+    // Si es un string, buscamos en el mapa de breakpoints
+    @if meta.type-of($breakpoint) == string {
+        $value: map.get($breakpoints, $breakpoint);
+        @if $value == null {
+            @error 'El breakpoint "#{$breakpoint}" no está definido en $breakpoints. Los breakpoints disponibles son: #{map.keys($breakpoints)}';
+        }
+        @return $value;
     }
-    @return $value;
+    
+    // Si no es ni número ni string, lanzamos un error
+    @error 'El breakpoint debe ser un número o un nombre de breakpoint válido. Se recibió: #{$breakpoint}';
 }
+
 @mixin fromTo($from, $to) {
     $min-width: get-value($from);
     $max-width: get-value($to);
@@ -28,6 +39,7 @@ $breakpoints: (
         @content;
     }
 }
+
 @mixin from($breakpoint) {
     $min-width: get-value($breakpoint);
     
@@ -35,6 +47,7 @@ $breakpoints: (
         @content;
     }
 }
+
 @mixin to($breakpoint) {
     $max-width: get-value($breakpoint);
     

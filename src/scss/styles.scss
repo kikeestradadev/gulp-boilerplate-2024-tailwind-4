@@ -1,22 +1,15 @@
-@import "tailwindcss";
+@use "tailwindcss" as *;
+@use "libraries/libraries" as *;
+@use "media-queries/media-queries" as *;
+@use "layout/theme" as *;
+@use "layout/layout" as *;
+@use "layout/fonts" as *;
+@use "hacks/hacks" as *;
+@use "components/components" as *; 
+@use "hacks/utilities" as *;
 
-
-// @layer theme base, components, utilities
-
-@import "libraries/libraries";
-@import "media-queries/media-queries";
-@import "hacks/utilities";
-@layer base {
-	@import "layout/theme";
-	@import "layout/layout";
-	@import "layout/fonts";
-	@import "hacks/hacks";
-}
-
-@layer components {
-	@import "core-modules/core-modules";
-	@import "internal-modules/internal-modules";
-}
-@layer utilities {
-	// Custom utilities can go here
+@include from(l){
+	body{
+		background: red;
+	}
 }
