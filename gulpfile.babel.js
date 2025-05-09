@@ -19,7 +19,7 @@ import cacheBust from 'gulp-cache-bust';
 import tailwindcss from '@tailwindcss/postcss';
 import autoprefixer from 'autoprefixer';
 
-// Modificar la configuración del compilador Sass
+// Configuración del compilador Sass usando la nueva API
 const sass = gulpSass(sassCompiler);
 
 // Función para leer todos los archivos JSON en un directorio
@@ -59,48 +59,32 @@ gulp.task('pug', () => {
 });
 
 gulp.task('sass', () => {
-	return gulp
-		.src('src/scss/*.scss')
-		.pipe(
-			plumber({
-				errorHandler: function (err) {
-					console.log(err.message);
-					this.emit('end');
-				},
-			})
-		)
+	return gulp.src('src/scss/*.scss')
+		.pipe(plumber({
+			errorHandler: function(err) {
+				console.log(err.message);
+				this.emit('end');
+			}
+		}))
 		.pipe(sourcemaps.init())
-		.pipe(
-			sass
-				.sync({
-					implementation: sassCompiler,
-					outputStyle: 'compressed',
-					includePaths: ['node_modules'],
-					quietDeps: true,
-					quiet: true,
-					loadPaths: ['node_modules'],
-				})
-				.on('error', sass.logError)
-		)
-		.pipe(
-			postcss([
-				tailwindcss,
-				autoprefixer(),
-				cssnano({
-					preset: [
-						'default',
-						{
-							discardComments: {
-								removeAll: true,
-							},
-						},
-					],
-				}),
-			])
-		)
+		.pipe(sass.sync({
+			outputStyle: 'compressed',
+			includePaths: ['node_modules']
+		}).on('error', sass.logError))
+		.pipe(postcss([
+			tailwindcss,
+			autoprefixer(),
+			cssnano({
+				preset: ['default', {
+					discardComments: {
+						removeAll: true
+					}
+				}]
+			})
+		]))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('public/'))
-		.pipe(browserSync.stream({ match: '**/*.css' }));
+		.pipe(browserSync.stream({match: '**/*.css'}));
 });
 
 gulp.task('scripts', () => {
