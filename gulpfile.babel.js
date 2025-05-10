@@ -18,6 +18,7 @@ import path from 'path';
 import cacheBust from 'gulp-cache-bust';
 import tailwindcss from '@tailwindcss/postcss';
 import autoprefixer from 'autoprefixer';
+import copy from 'gulp-copy';
 
 // Configuración del compilador Sass usando la nueva API
 const sass = gulpSass(sassCompiler);
@@ -105,9 +106,15 @@ gulp.task('scripts', () => {
 		.pipe(gulp.dest('public/')); // Coloca el archivo en public/
 });
 
+// Tarea para copiar assets
+gulp.task('assets', () => {
+	return gulp.src('src/assets/**/*')
+		.pipe(copy('public', { prefix: 1 }));
+});
+
 gulp.task(
 	'serve',
-	gulp.series('pug', 'sass', 'scripts', () => {
+	gulp.series('pug', 'sass', 'scripts', 'assets', () => {
 		browserSync.init({
 			server: {
 				baseDir: 'public',
@@ -141,9 +148,16 @@ gulp.task(
 			browserSync.reload();
 			done();
 		});
+
+		// Watch para Assets
+		gulp.watch('src/assets/**/*', (done) => {
+			gulp.series('assets')();
+			browserSync.reload();
+			done();
+		});
 	})
 );
 
 gulp.task('dev', gulp.series('serve'));
-gulp.task('build', gulp.series('pug', 'sass', 'scripts'));
+gulp.task('build', gulp.series('pug', 'sass', 'scripts', 'assets'));
 gulp.task('default', gulp.series('dev'));
