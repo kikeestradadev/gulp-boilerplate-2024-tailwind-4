@@ -16,6 +16,6 @@
 		"lib": ["esnext", "dom"],
 		"types": ["vite/client"]
 	},
-	"include": ["src/**/*.js", "src/**/*.pug", "src/**/*.html", "tailwind.config.js"],
+	"include": ["src/**/*.js", "src/**/*.pug", "src/**/*.html"],
 	"exclude": ["node_modules"]
 }

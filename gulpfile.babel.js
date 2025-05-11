@@ -19,6 +19,7 @@ import cacheBust from 'gulp-cache-bust';
 import tailwindcss from '@tailwindcss/postcss';
 import autoprefixer from 'autoprefixer';
 import copy from 'gulp-copy';
+import htmlmin from 'gulp-htmlmin';
 
 // Configuración del compilador Sass usando la nueva API
 const sass = gulpSass(sassCompiler);
@@ -44,18 +45,25 @@ gulp.task('pug', () => {
 	return gulp
 		.src('./src/pug/pages/**/*.pug')
 		.pipe(plumber())
-		.pipe(data(() => getJsonData())) // Usamos la función para obtener datos
+		.pipe(data(() => getJsonData()))
 		.pipe(
 			pug({
-				pretty: true, // Asegura que el HTML no esté minificado
+				pretty: false,
+				compileDebug: false,
+				doctype: 'html'
 			})
 		)
 		.pipe(
 			cacheBust({
-				// Aplicamos cache busting aquí
-				type: 'timestamp', // Usamos timestamp para asegurar la actualización de cache
+				type: 'timestamp',
 			})
 		)
+		.pipe(htmlmin({ 
+			collapseWhitespace: true,
+			removeComments: true,
+			minifyCSS: true,
+			minifyJS: true
+		}))
 		.pipe(gulp.dest('public'));
 });
 

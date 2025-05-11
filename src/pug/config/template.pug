@@ -1,18 +1,42 @@
 block config
-	include vars
-	include mixins/mixins 
+	-let currentPage 		= 'home'
+	-let content 			= 'My Page'
+	-let siteName 			= 'GulpBoilerplate'
+	-let pageDescription 	= 'Here is the description Page.'
 doctype html
 html(lang='en' prefix='og: http://ogp.me/ns#', class='no-js')
 	head
-		include utilis/metatags 
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(name='format-detection', content='telephone=no')
+		meta(name="theme-color", content="#0096D9")
+		link(rel="shortcut icon", type="image/png", href="./assets/img/icon_1024.png")
+		link(rel="apple-touch-icon", href="./assets/img/icon_1024.png")
+		meta(name="description", content="Breve descripción del sitio web que ayuda en el SEO.")
+		meta(http-equiv="Content-Security-Policy", content="upgrade-insecure-requests")
+		meta(http-equiv="Cache-Control", content="no-cache, no-store, must-revalidate")
+		meta(http-equiv="Expires", content="0")
+		meta(http-equiv="Pragma", content="no-cache") 
+		link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css")
+		link(rel="preconnect", href="https://fonts.googleapis.com")
+		link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+		link(href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap", rel="stylesheet")
 		link(rel="stylesheet" href="styles.css")
 		title= currentPage.slice(0,1).toUpperCase() + currentPage.slice(1) + " | " + siteName
-	body(class=currentPage, itemscope itemtype="http://schema.org/WebPage")
-		block body-container
+	body(class=`${currentPage} mt-[var(--header-height)] min-h-[calc(100vh-var(--header-height))] flex flex-col`, itemscope itemtype="http://schema.org/WebPage")
+		//- here start the Main Header
+		header(class='bg-[var(--base-color)] min-h-[var(--header-height)] fixed top-0 w-full z-[100]')
+			block main-header
+		//- here ends the Main Header
+		//- here start the Main Container
+		main
+			block main-container
+		//- here ends the Main Container
+		//- here start the Main Footer
+		footer(class='bg-[var(--base-color)] text-[#FFF] min-h-[var(--header-height)] mt-[auto]')
+			block main-footer
+		//- here ends the Main Footer
+		script(src="index.js")
 		script(src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js")
 		script(src="index.js")
 		block scripts
