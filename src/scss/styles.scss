@@ -1,6 +1,8 @@
-@use "tailwindcss" as *;
-@use "fonts" as *;
-@use "prism" as *;
+@import "tailwindcss";
+@import "media-queries";
+@import "fonts";
+@import "prism";
+@import "components/components";
 
 @theme {
 	--breakpoint-md: initial;
