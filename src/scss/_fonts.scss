@@ -4,12 +4,6 @@
 	background: var(--base-color);
 }
 
-body {
-	@include fromTo(l, lg) {
-		background-color: green;
-	}
-}
-
 html, body {
 	font-family: 'Montserrat', sans-serif;
 }
@@ -57,7 +51,6 @@ h2 {
 		font-size: 41px;
 		line-height: 49px;
 		letter-spacing: -0.82px;
-		color: red;
 	}
 }
 
