@@ -1,7 +1,7 @@
 @import "tailwindcss";
-@import "media-queries";
-@import "fonts";
-@import "prism";
+@import "core/media-queries";
+@import "core/fonts";
+@import "core/prism";
 @import "components/components";
 
 @theme {

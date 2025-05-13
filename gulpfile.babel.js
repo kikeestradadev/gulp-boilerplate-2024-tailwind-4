@@ -76,9 +76,18 @@ gulp.task('sass', () => {
 			}
 		}))
 		.pipe(sourcemaps.init())
-		.pipe(sass.sync({
+		.pipe(sass({
 			outputStyle: 'compressed',
-			includePaths: ['node_modules']
+			includePaths: ['node_modules'],
+			quietDeps: true,
+			logger: {
+				warn: function(message) {
+					// Ignorar mensajes de deprecación
+					if (!message.includes('legacy-js-api') && !message.includes('@import rules are deprecated')) {
+						console.warn(message);
+					}
+				}
+			}
 		}).on('error', sass.logError))
 		.pipe(postcss([
 			tailwindcss,
