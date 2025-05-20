@@ -20,9 +20,13 @@ import tailwindcss from '@tailwindcss/postcss';
 import autoprefixer from 'autoprefixer';
 import copy from 'gulp-copy';
 import htmlmin from 'gulp-htmlmin';
+import { deleteAsync } from 'del';
 
 // Configuración del compilador Sass usando la nueva API
 const sass = gulpSass(sassCompiler);
+
+// Configuración del entorno
+const isDev = process.env.NODE_ENV !== 'production';
 
 // Función para leer todos los archivos JSON en un directorio
 const getJsonData = () => {
@@ -48,7 +52,7 @@ gulp.task('pug', () => {
 		.pipe(data(() => getJsonData()))
 		.pipe(
 			pug({
-				pretty: false,
+				pretty: isDev, // true para desarrollo, false para producción
 				compileDebug: false,
 				doctype: 'html'
 			})
@@ -59,10 +63,10 @@ gulp.task('pug', () => {
 			})
 		)
 		.pipe(htmlmin({ 
-			collapseWhitespace: true,
-			removeComments: true,
-			minifyCSS: true,
-			minifyJS: true
+			collapseWhitespace: !isDev,
+			removeComments: !isDev,
+			minifyCSS: !isDev,
+			minifyJS: !isDev
 		}))
 		.pipe(gulp.dest('public'));
 });
@@ -77,7 +81,7 @@ gulp.task('sass', () => {
 		}))
 		.pipe(sourcemaps.init())
 		.pipe(sass({
-			outputStyle: 'compressed',
+			outputStyle: isDev ? 'expanded' : 'compressed',
 			includePaths: ['node_modules'],
 			quietDeps: true,
 			logger: {
@@ -92,13 +96,19 @@ gulp.task('sass', () => {
 		.pipe(postcss([
 			tailwindcss,
 			autoprefixer(),
-			cssnano({
+			...(isDev ? [] : [cssnano({
 				preset: ['default', {
 					discardComments: {
 						removeAll: true
-					}
+					},
+					normalizeWhitespace: true,
+					colormin: true,
+					discardUnused: true,
+					mergeIdents: true,
+					reduceIdents: true,
+					zindex: true
 				}]
-			})
+			})])
 		]))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('public/'))
@@ -109,25 +119,32 @@ gulp.task('scripts', () => {
 	return browserify('src/js/index.js')
 		.transform(babelify)
 		.bundle()
-		.pipe(source('index.js')) // Mantén el nombre original
+		.pipe(source('index.js'))
 		.pipe(buffer())
 		.pipe(sourcemaps.init({ loadMaps: true }))
 		.pipe(
 			minify({
 				ext: {
-					min: '.js', // Mantén la extensión .js sin agregar .min
+					min: '.js',
 				},
+				noSource: !isDev,
+				ignoreFiles: isDev ? ['*.min.js'] : []
 			})
 		)
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest('public/')); // Coloca el archivo en public/
+		.pipe(gulp.dest('public/'));
+});
+
+// Tarea para limpiar assets
+gulp.task('clean-assets', () => {
+	return deleteAsync('public/assets/**/*');
 });
 
 // Tarea para copiar assets
-gulp.task('assets', () => {
+gulp.task('assets', gulp.series('clean-assets', () => {
 	return gulp.src('src/assets/**/*')
 		.pipe(copy('public', { prefix: 1 }));
-});
+}));
 
 gulp.task(
 	'serve',
@@ -167,7 +184,7 @@ gulp.task(
 		});
 
 		// Watch para Assets
-		gulp.watch('src/assets/**/*', (done) => {
+		gulp.watch('src/assets/**/*', { events: ['add', 'change', 'unlink'] }, (done) => {
 			gulp.series('assets')();
 			browserSync.reload();
 			done();
@@ -175,6 +192,9 @@ gulp.task(
 	})
 );
 
+// Tareas principales
 gulp.task('dev', gulp.series('serve'));
 gulp.task('build', gulp.series('pug', 'sass', 'scripts', 'assets'));
+
+// Tarea por defecto
 gulp.task('default', gulp.series('dev'));
