@@ -194,7 +194,7 @@ const clearCache = (done) => {
 
 gulp.task(
 	'serve',
-	gulp.series('pug', 'sass', 'scripts', 'assets', () => {
+	gulp.series('pug', 'sass', 'scripts', 'assets', (done) => {
 		// Inicializar BrowserSync
 		const bs = browserSync.create();
 		bs.init(browserSyncConfig);
@@ -252,10 +252,12 @@ gulp.task(
 				});
 			});
 
-		// Manejar la limpieza de la caché solo cuando se solicite explícitamente
+		// Manejar el cierre del servidor
 		process.on('SIGINT', () => {
 			console.log('\nCerrando el servidor de desarrollo...');
-			process.exit();
+			bs.exit();
+			done();
+			process.exit(0);
 		});
 	})
 );
