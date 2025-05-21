@@ -252,14 +252,16 @@ gulp.task(
 				});
 			});
 
-		// Manejar la limpieza de la caché
+		// Manejar la limpieza de la caché solo cuando se solicite explícitamente
 		process.on('SIGINT', () => {
-			clearCache(() => {
-				process.exit();
-			});
+			console.log('\nCerrando el servidor de desarrollo...');
+			process.exit();
 		});
 	})
 );
+
+// Tarea para limpiar la caché manualmente
+gulp.task('clean', clearCache);
 
 // Tareas principales
 gulp.task('dev', gulp.series('serve'));
