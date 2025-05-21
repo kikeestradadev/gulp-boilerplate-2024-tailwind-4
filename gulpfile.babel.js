@@ -28,6 +28,32 @@ const sass = gulpSass(sassCompiler);
 // Configuración del entorno
 const isDev = process.env.NODE_ENV !== 'production';
 
+// Configuración de BrowserSync
+const browserSyncConfig = {
+	server: {
+		baseDir: 'public',
+	},
+	port: 3000,
+	notify: true,
+	open: true,
+	browser: 'default',
+	reloadDelay: 100,
+	reloadDebounce: 500,
+	reloadThrottle: 0,
+	ghostMode: false,
+	ui: {
+		port: 3001
+	},
+	watchOptions: {
+		ignoreInitial: true,
+		ignored: ['node_modules/**/*', 'public/**/*'],
+		awaitWriteFinish: {
+			stabilityThreshold: 1000,
+			pollInterval: 100
+		}
+	}
+};
+
 // Función para leer todos los archivos JSON en un directorio
 const getJsonData = () => {
 	const dataDir = './src/data/';
@@ -146,48 +172,91 @@ gulp.task('assets', gulp.series('clean-assets', () => {
 		.pipe(copy('public', { prefix: 1 }));
 }));
 
+// Función para manejar errores
+const handleError = (err) => {
+	console.log(err.toString());
+	this.emit('end');
+};
+
+// Función para notificar cambios
+const notifyChange = (event) => {
+	const fileName = event.path.split('/').pop();
+	console.log(`File ${fileName} was ${event.type}, running tasks...`);
+};
+
+// Función para limpiar la caché
+const clearCache = (done) => {
+	deleteAsync(['public/**/*', '!public/assets/**/*']).then(() => {
+		console.log('Cache cleared');
+		done();
+	});
+};
+
 gulp.task(
 	'serve',
 	gulp.series('pug', 'sass', 'scripts', 'assets', () => {
-		browserSync.init({
-			server: {
-				baseDir: 'public',
-			},
-			port: 3000, // Especificar un puerto
-			notify: false, // Mantener las notificaciones desactivadas
-			open: true, // Cambiar a true para que abra el navegador
-			browser: 'default', // Usar el navegador por defecto
-		});
+		// Inicializar BrowserSync
+		const bs = browserSync.create();
+		bs.init(browserSyncConfig);
 
-		// Watch para Pug
-		gulp.watch('src/pug/**/*.pug', (done) => {
-			gulp.series('pug', 'sass')();
-			browserSync.reload();
-			done();
-		});
+		// Watch para Pug con debounce
+		const pugWatcher = gulp.watch('src/pug/**/*.pug', { ignoreInitial: false })
+			.on('change', (event) => {
+				notifyChange(event);
+				gulp.series('pug')((err) => {
+					if (err) handleError(err);
+					bs.reload();
+				});
+			});
 
-		// Watch para Sass y Tailwind
-		gulp.watch(['src/scss/**/*.scss', 'tailwind.config.js'], gulp.series('sass'));
+		// Watch para Sass y Tailwind con debounce
+		const sassWatcher = gulp.watch(['src/scss/**/*.scss', 'tailwind.config.js'], { ignoreInitial: false })
+			.on('change', (event) => {
+				notifyChange(event);
+				gulp.series('sass')((err) => {
+					if (err) handleError(err);
+					bs.reload('*.css');
+				});
+			});
 
-		// Watch para Scripts
-		gulp.watch('src/js/**/*.js', (done) => {
-			gulp.series('scripts')();
-			browserSync.reload();
-			done();
-		});
+		// Watch para Scripts con debounce
+		const scriptsWatcher = gulp.watch('src/js/**/*.js', { ignoreInitial: false })
+			.on('change', (event) => {
+				notifyChange(event);
+				gulp.series('scripts')((err) => {
+					if (err) handleError(err);
+					bs.reload();
+				});
+			});
 
-		// Watch para datos
-		gulp.watch(['src/data/**/*.json', 'src/md/**/*.md'], (done) => {
-			gulp.series('pug', 'sass')();
-			browserSync.reload();
-			done();
-		});
+		// Watch para datos con debounce
+		const dataWatcher = gulp.watch(['src/data/**/*.json', 'src/md/**/*.md'], { ignoreInitial: false })
+			.on('change', (event) => {
+				notifyChange(event);
+				gulp.series('pug', 'sass')((err) => {
+					if (err) handleError(err);
+					bs.reload();
+				});
+			});
 
-		// Watch para Assets
-		gulp.watch('src/assets/**/*', { events: ['add', 'change', 'unlink'] }, (done) => {
-			gulp.series('assets')();
-			browserSync.reload();
-			done();
+		// Watch para Assets con debounce
+		const assetsWatcher = gulp.watch('src/assets/**/*', { 
+			ignoreInitial: false,
+			events: ['add', 'change', 'unlink']
+		})
+			.on('change', (event) => {
+				notifyChange(event);
+				gulp.series('assets')((err) => {
+					if (err) handleError(err);
+					bs.reload();
+				});
+			});
+
+		// Manejar la limpieza de la caché
+		process.on('SIGINT', () => {
+			clearCache(() => {
+				process.exit();
+			});
 		});
 	})
 );
