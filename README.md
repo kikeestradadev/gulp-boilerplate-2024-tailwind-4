@@ -5,7 +5,7 @@ This is a Gulp Boilerplate developed by me tu create project fron scratch and in
 for this i use:
 
 - `HTML (pug)`
-- `Json Data Objects for PUG JS`
+- `Get Json Data (PUG JS)`
 - `CSS (sass)`
 - `JS (ES6)`
 - `CSS (tailwind 4)`
