@@ -15,4 +15,4 @@ Instructions:
 - `gulp build` before deployment
 - `npm run deploy` to publish the site in gh pages
 
-## gh-pages link: https://kikeestrada.github.io/gulp-boilerplate-2024-tailwind-4/
+## gh-pages link: https://kikeestradadev.github.io/gulp-boilerplate-2024-tailwind-4/

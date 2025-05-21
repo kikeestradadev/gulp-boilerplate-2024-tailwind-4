@@ -4,7 +4,7 @@
   "description": "Simple scafolding for statics web projects",
   "type": "module",
   "main": "gulpfile.babel.js",
-  "homepage": "https://kikeestrada.github.io/gulp-boilerplate-2024-tailwind-4/",
+  "homepage": "https://kikeestradadev.github.io/gulp-boilerplate-2024-tailwind-4/",
   "scripts": {
     "dev": "NODE_ENV=development gulp dev",
     "build": "NODE_ENV=production gulp build",
