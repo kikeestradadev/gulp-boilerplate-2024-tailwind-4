@@ -180,8 +180,11 @@ const handleError = (err) => {
 
 // Función para notificar cambios
 const notifyChange = (event) => {
-	const fileName = event.path.split('/').pop();
-	console.log(`File ${fileName} was ${event.type}, running tasks...`);
+	if (!event) return;
+	
+	const fileName = event.path ? event.path.split('/').pop() : 'unknown file';
+	const eventType = event.type || 'changed';
+	console.log(`File ${fileName} was ${eventType}, running tasks...`);
 };
 
 // Función para limpiar la caché
@@ -201,8 +204,8 @@ gulp.task(
 
 		// Watch para Pug con debounce
 		const pugWatcher = gulp.watch('src/pug/**/*.pug', { ignoreInitial: false })
-			.on('change', (event) => {
-				notifyChange(event);
+			.on('all', (event, path) => {
+				notifyChange({ type: event, path });
 				gulp.series('pug')((err) => {
 					if (err) handleError(err);
 					bs.reload();
@@ -211,8 +214,8 @@ gulp.task(
 
 		// Watch para Sass y Tailwind con debounce
 		const sassWatcher = gulp.watch(['src/scss/**/*.scss', 'tailwind.config.js'], { ignoreInitial: false })
-			.on('change', (event) => {
-				notifyChange(event);
+			.on('all', (event, path) => {
+				notifyChange({ type: event, path });
 				gulp.series('sass')((err) => {
 					if (err) handleError(err);
 					bs.reload('*.css');
@@ -221,8 +224,8 @@ gulp.task(
 
 		// Watch para Scripts con debounce
 		const scriptsWatcher = gulp.watch('src/js/**/*.js', { ignoreInitial: false })
-			.on('change', (event) => {
-				notifyChange(event);
+			.on('all', (event, path) => {
+				notifyChange({ type: event, path });
 				gulp.series('scripts')((err) => {
 					if (err) handleError(err);
 					bs.reload();
@@ -231,8 +234,8 @@ gulp.task(
 
 		// Watch para datos con debounce
 		const dataWatcher = gulp.watch(['src/data/**/*.json', 'src/md/**/*.md'], { ignoreInitial: false })
-			.on('change', (event) => {
-				notifyChange(event);
+			.on('all', (event, path) => {
+				notifyChange({ type: event, path });
 				gulp.series('pug', 'sass')((err) => {
 					if (err) handleError(err);
 					bs.reload();
@@ -244,8 +247,8 @@ gulp.task(
 			ignoreInitial: false,
 			events: ['add', 'change', 'unlink']
 		})
-			.on('change', (event) => {
-				notifyChange(event);
+			.on('all', (event, path) => {
+				notifyChange({ type: event, path });
 				gulp.series('assets')((err) => {
 					if (err) handleError(err);
 					bs.reload();
