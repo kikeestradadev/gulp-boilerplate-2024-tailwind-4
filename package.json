@@ -57,6 +57,7 @@
     "gulp-sitemap": "^8.0.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-strip-css-comments": "^3.0.0",
+    "gulp-terser": "^2.1.0",
     "gulp-uncss": "^1.0.6",
     "gulp-watch": "^4.3.11",
     "imagemin": "^9.0.0",

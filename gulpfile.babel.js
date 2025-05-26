@@ -20,6 +20,10 @@ import tailwindcss from '@tailwindcss/postcss';
 import autoprefixer from 'autoprefixer';
 import copy from 'gulp-copy';
 import htmlmin from 'gulp-htmlmin';
+import cleanCSS from 'gulp-clean-css';
+import terser from 'gulp-terser';
+import { deleteAsync } from 'del';
+import watch from 'gulp-watch';
 
 // Configuración del compilador Sass usando la nueva API
 const sass = gulpSass(sassCompiler);
@@ -117,15 +121,66 @@ gulp.task('scripts', () => {
 		.pipe(gulp.dest('public/')); // Coloca el archivo en public/
 });
 
-// Tarea para copiar assets
-gulp.task('assets', () => {
+// Tarea para sincronizar assets
+gulp.task('sync-assets', () => {
 	return gulp.src('src/assets/**/*')
 		.pipe(copy('public', { prefix: 1 }));
 });
 
+// Tarea para watch de assets
+gulp.task('watch-assets', () => {
+	return watch('src/assets/**/*', { events: ['add', 'change', 'unlink'] })
+		.on('add', (filepath) => {
+			const relativePath = path.relative('src/assets', filepath);
+			const destPath = path.join('public/assets', relativePath);
+			return gulp.src(filepath)
+				.pipe(copy('public', { prefix: 1 }));
+		})
+		.on('change', (filepath) => {
+			const relativePath = path.relative('src/assets', filepath);
+			const destPath = path.join('public/assets', relativePath);
+			return gulp.src(filepath)
+				.pipe(copy('public', { prefix: 1 }));
+		})
+		.on('unlink', (filepath) => {
+			const relativePath = path.relative('src/assets', filepath);
+			const destPath = path.join('public/assets', relativePath);
+			return deleteAsync(destPath);
+		});
+});
+
+// Tarea para comprimir archivos en public
+gulp.task('compress', () => {
+	// Comprimir HTML
+	gulp.src('public/**/*.html')
+		.pipe(htmlmin({ 
+			collapseWhitespace: true,
+			removeComments: true,
+			minifyCSS: true,
+			minifyJS: true
+		}))
+		.pipe(gulp.dest('public'));
+
+	// Comprimir CSS
+	gulp.src('public/**/*.css')
+		.pipe(cleanCSS())
+		.pipe(gulp.dest('public'));
+
+	// Comprimir JS
+	gulp.src('public/**/*.js')
+		.pipe(terser())
+		.pipe(gulp.dest('public'));
+
+	return Promise.resolve();
+});
+
+gulp.task('clean', () => {
+	return deleteAsync(['public/**/*']);
+});
+
 gulp.task(
 	'serve',
-	gulp.series('pug', 'sass', 'scripts', 'assets', () => {
+	gulp.series('pug', 'sass', 'scripts', 'sync-assets', () => {
 		browserSync.init({
 			server: {
 				baseDir: 'public',
@@ -160,15 +215,11 @@ gulp.task(
 			done();
 		});
 
-		// Watch para Assets
-		gulp.watch('src/assets/**/*', (done) => {
-			gulp.series('assets')();
-			browserSync.reload();
-			done();
-		});
+		// Watch para Assets con sincronización
+		gulp.task('watch-assets')();
 	})
 );
 
-gulp.task('dev', gulp.series('serve'));
-gulp.task('build', gulp.series('pug', 'sass', 'scripts', 'assets'));
+gulp.task('dev', gulp.series('clean', 'serve'));
+gulp.task('build', gulp.series('pug', 'sass', 'scripts', 'sync-assets', 'compress'));
 gulp.task('default', gulp.series('dev'));
