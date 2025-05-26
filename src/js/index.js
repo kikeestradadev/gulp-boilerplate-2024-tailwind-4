@@ -1,19 +1,13 @@
-import internalModule from './modules/internalModule';
-import homeChooseSlider from './modules/homeChooseSlider'; 
-import homeTrustedSlider from './modules/homeTrustedSlider';
-import deleteUnbounceReset from './modules/deleteUnbounceReset';
-import insertMetaTags from './modules/insertMetaTags';
-import unbounceCookie from './modules/unbounceCookie';
-import utmHandler from './modules/utmHandler';
+import component from './components/component';
+import deleteUnbounceReset from './unbounce/deleteUnbounceReset';
+import insertMetaTags from './unbounce/insertMetaTags';
+import utmHandler from './unbounce/utmHandler';
+import Prism from 'prismjs';
 
-// import Prism from 'prismjs';
 (() => {
-	internalModule();
-	// Prism.highlightAll(); // Corrected: Use Prism.highlightAll() instead of undefined prismjs()
-	homeChooseSlider(); 
-	homeTrustedSlider();
+	component();
 	deleteUnbounceReset();
 	insertMetaTags();
-	unbounceCookie();
 	utmHandler();
+	Prism.highlightAll(); // Corrected: Use Prism.highlightAll() instead of undefined prismjs()
 })();

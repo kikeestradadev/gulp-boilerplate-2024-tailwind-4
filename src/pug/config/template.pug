@@ -24,13 +24,13 @@ html(lang='en' prefix='og: http://ogp.me/ns#', class='no-js')
 		link(rel="stylesheet" href="styles.css")
 		title= currentPage.slice(0,1).toUpperCase() + currentPage.slice(1) + " | " + siteName
 	body(class=`${currentPage}`, itemscope itemtype="http://schema.org/WebPage" )
-		div(class='flex flex-col min-h-screen bg-[var(--bg-body)] bg-container overflow-x-hidden')
+		div(class='flex flex-col min-h-screen')
 			//- here start the Main Header
 			header(class='main-container')
 				block main-header
 			//- here ends the Main Header
 			//- here start the Main Container
-			main(class='flex-grow main-container'): h1(class='text-red-500') Hello World
+			main
 				block main-container
 			//- here ends the Main Container
 			//- here start the Main Footer 
