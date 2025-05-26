@@ -18,10 +18,8 @@
 }
 
 :root{
-	--bg-body: #192666;
-	--base-color: #192666;
+	--base-color: steelblue;
 	--header-height: 80px;
-	--bg-footer: #192666;
 	@media (min-width: 960px) {
 		--header-height: 152px;
 	}
