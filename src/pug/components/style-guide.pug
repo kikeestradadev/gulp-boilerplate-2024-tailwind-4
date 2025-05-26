@@ -1,0 +1,89 @@
+section(class='main-container')
+	div(class='container')
+		div(class='flex flex-col lg:flex-row gap-[50px] relative')
+			//- Botón de menú móvil
+			button(id='mobileMenuButton' class='lg:hidden fixed top-1 right-4 z-100 p-2 bg-gray-100 rounded-lg shadow-md hover:bg-gray-200 transition-colors')
+				svg(xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+					path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16")
+			//- Menú lateral
+			div(
+				id='sideMenu' 
+				class=`
+					fixed 
+					lg:sticky 
+					lg:top-4 
+					lg:self-start 
+					transform 
+					-translate-x-full 
+					lg:translate-x-0 
+					transition-transform 
+					duration-300 
+					ease-in-out 
+					z-40 
+					lg:z-auto 
+					order-2 
+					lg:order-1 
+					w-[250px] 
+					lg:w-[200px] 
+					min-h-32 
+					bg-white 
+					lg:bg-transparent`
+			)
+				div(class='h-full lg:h-auto p-4 lg:p-0 bg-gray-100 lg:bg-transparent rounded-lg lg:rounded-none shadow-md lg:shadow-none')
+					ul(class="list-none flex flex-col gap-2")
+						li(class="hover:bg-gray-200 rounded transition-colors")
+							a(href='#component-1' class="block px-4 py-2 text-gray-700 hover:text-blue-600 menu-link") component-1
+						li(class="hover:bg-gray-200 rounded transition-colors")
+							a(href='#component-2' class="block px-4 py-2 text-gray-700 hover:text-blue-600 menu-link") component-2
+						li(class="hover:bg-gray-200 rounded transition-colors")
+							a(href='#component-3' class="block px-4 py-2 text-gray-700 hover:text-blue-600 menu-link") component-3
+						li(class="hover:bg-gray-200 rounded transition-colors")
+							a(href='#component-4' class="block px-4 py-2 text-gray-700 hover:text-blue-600 menu-link") component-4
+						li(class="hover:bg-gray-200 rounded transition-colors")
+							a(href='#component-5' class="block px-4 py-2 text-gray-700 hover:text-blue-600 menu-link") component-5
+						li(class="hover:bg-gray-200 rounded transition-colors")
+							a(href='#component-6' class="block px-4 py-2 text-gray-700 hover:text-blue-600 menu-link") component-6
+						li(class="hover:bg-gray-200 rounded transition-colors")
+							a(href='#component-7' class="block px-4 py-2 text-gray-700 hover:text-blue-600 menu-link") component-7
+						li(class="hover:bg-gray-200 rounded transition-colors")
+							a(href='#component-8' class="block px-4 py-2 text-gray-700 hover:text-blue-600 menu-link") component-8
+						li(class="hover:bg-gray-200 rounded transition-colors")
+							a(href='#component-9' class="block px-4 py-2 text-gray-700 hover:text-blue-600 menu-link") component-9
+						li(class="hover:bg-gray-200 rounded transition-colors")
+							a(href='#component-10' class="block px-4 py-2 text-gray-700 hover:text-blue-600 menu-link") component-10
+	
+			//- Contenido principal
+			div(class='order-1 lg:order-2 w-full lg:flex-1 min-h-32')
+				include ../components/style-guide-components/component-1.pug
+				include ../components/style-guide-components/component-2.pug
+				include ../components/style-guide-components/component-3.pug
+				include ../components/style-guide-components/component-4.pug
+				include ../components/style-guide-components/component-5.pug
+				include ../components/style-guide-components/component-6.pug
+				include ../components/style-guide-components/component-7.pug
+				include ../components/style-guide-components/component-8.pug
+				include ../components/style-guide-components/component-9.pug
+				include ../components/style-guide-components/component-10.pug
+block scripts
+	script.
+		const sideMenu = document.getElementById('sideMenu');
+		const mobileMenuButton = document.getElementById('mobileMenuButton');
+		const menuLinks = document.querySelectorAll('.menu-link');
+
+		// Función para abrir/cerrar el menú
+		function toggleMenu() {
+			sideMenu.classList.toggle('-translate-x-full');
+		}
+
+		// Evento para el botón del menú
+		mobileMenuButton.addEventListener('click', toggleMenu);
+
+		// Eventos para los enlaces del menú
+		menuLinks.forEach(link => {
+			link.addEventListener('click', function(e) {
+				// Solo cerrar el menú en móvil
+				if (window.innerWidth < 1024) { // 1024px es el breakpoint lg de Tailwind
+					toggleMenu();
+				}
+			});
+		});

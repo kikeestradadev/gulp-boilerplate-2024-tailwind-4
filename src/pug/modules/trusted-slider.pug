@@ -1,0 +1,30 @@
+section(class='trusted-section py-[32px] m:py-[64px] lg:py-[80px]')
+	div(class='container')
+		div(class='flex flex-col pb-[20px] m:pb-[32px] lg:pb-[40px]')
+			span(class='text-[#FFF] text-[28px] text-center m:text-[48px] lg:text-[80px] font-bold leading-[120%]')
+				span(class='bas-gold-text') Trusted&nbsp;<br class='m:hidden'>
+				| by players like you
+			span(class='text-[#FFF] text-center font-montserrat text-[12px] m:text-[20px] lg:text-[32px] font-semibold leading-[180%] tracking-[-0.32px]') Here's what some of them had to say:
+		div(class='flex flex-col')
+			div(class='container')
+				div(class='swiper home-trusted-slider')
+					div(class='swiper-wrapper mb-[58px] m:mb-[66px] lg:mb-[74px]')
+						-for(let item of trustedSlider) 
+							div(class='swiper-slide relative') 
+								div(class='z-10 min-h-[200px] m:min-h-[349px] lg:min-h-[515px] light-blue-gradient p-[16px] m:p-[44px] lg:p-[64px] w-full bottom-0 flex flex-col justify-center gap-[8px] m:gap-[18px] lg:gap-[24px]')
+									div(class='flex justify-between')
+										span(class='flex gap-[4px] items-center text-[#FFF] text-[12px] m:text-[24px] lg:text-[36px] font-normal font-[500] leading-normal tracking-[-0.24px]')
+											img(src="https://images.betanysports.eu/wp-content/uploads/people.svg", class='size-[24px] m:size-[52px] lg:size-[80px]')
+											| #{item.username}
+										span(class='flex items-center gap-[4px] text-[#FFF] text-[16px] m:text-[24px] font-[500] leading-normal tracking-[-0.24px]')
+											img(src="https://images.betanysports.eu/wp-content/uploads/verified.svg", class='size-[24px] m:size-[32px]')
+											| #{item.verifiedText || 'Verified Player'}
+									p(class='flex text-[#FFF] text-[12px] m:text-[24px] lg:text-[36px] font-bold leading-normal tracking-[-0.12px]') #{item.title}
+									p(class='flex text-[#FFF] text-[0px] m:text-[20px] lg:text-[32px] font-normal font-[500] leading-normal tracking-[-0.24px]') #{item.description}
+									div(class='flex gap-[4px]')
+										- for (let i = 1; i <= (item.rating || 5); i++)
+											img(src="https://images.betanysports.eu/wp-content/uploads/star-rate.svg", class='size-[12px] m:size-[24px] lg:size-[28px]')
+									p(class='flex text-[rgba(255,255,255,0.70)] text-[16px] m:text-[24px] font-[500] leading-normal tracking-[-0.16px]') #{item.reviewDate || 'Reviewed on March 9, 2025'}
+					div(class='w-full h-[26px] m:h-[35px] lg:h-[50px] absolute bottom-[10px]')
+						div(class='swiper-button-prev after:hidden bg-[url(https://img.betanysports.eu/left-arrow.svg)] bg-[white] bg-no-repeat bg-center bg-cover !size-[23px] m:!size-[31px] lg:!size-[48px] rounded-full absolute !left-[calc(100%-65px)] m:!left-[calc(100%-75px)] lg:!left-[calc(100%-110px)]')
+						div(class='swiper-button-next after:hidden bg-[url(https://img.betanysports.eu/right-arrow.svg)] bg-[white] bg-no-repeat bg-center bg-cover !size-[23px] m:!size-[31px] lg:!size-[48px] rounded-full')

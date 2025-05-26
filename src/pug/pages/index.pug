@@ -1,0 +1,23 @@
+extends ../config/template
+
+append config
+	-currentPage		= "home"
+	-siteName			= 'Layouts'
+	-content			= 'content'
+	-pageDescription	= 'Pagina inicial de MyBoilerplate'
+
+block main-header
+	//- include ../modules/top-header
+block main-container
+	//- div(class='container')
+	//- 	include ../modules/top-banner
+	//- 	include ../modules/mid-banner
+	//- 	include ../modules/trusted-slider
+	//- 	include ../modules/four-ways-slider
+		include ../modules/outstanding-slider
+
+block main-footer
+	//- include ../modules/footer
+
+block scripts
+	//- Aquí van los scripts específicos de la página

@@ -1,0 +1,17 @@
+section(class='four-ways-slider py-[32px] m:py-[64px] lg:py-[80px]')
+	div(class='container flex flex-col')
+		div(class='flex flex-col pb-[20px] m:pb-[32px] lg:pb-[40px]')
+			span(class='text-[#FFF] text-[28px] text-center m:text-[48px] lg:text-[80px] font-bold leading-[120%]')
+				| Four ways to win&nbsp;<br> 
+				span(class='bas-gold-text') One place to play
+			span(class='text-[#FFF] text-center font-montserrat text-[12px] m:text-[20px] lg:text-[32px] font-semibold leading-[180%] tracking-[-0.32px]') Winning comes in all forms — Pick yours
+		div
+			div(class='grid grid-cols-2 m:grid-cols-4 gap-5')  
+				-for(let item of fourWaysSlider)
+					article(class='rounded-[10px] overflow-hidden h-full flex flex-col')
+						img(src=item.img, class='w-full' alt=item.title)
+						div(class='bg-[#1b2ca2] p-[16px] m:p-[24px] lg:p-[32px] w-full flex-1 flex flex-col justify-start') 
+							p(class='text-[#FFF] text-center text-[14px] m:text-[16px] lg:text-[28px] font-semibold leading-[180%] tracking-[-0.32px]') #{item.title}
+							p(class='text-[#ffffff] text-[10px] m:text-[12px] lg:text-[16px] text-center') #{item.description}
+	div(class='container flex justify-center pt-[32px] m:pt-[80px]')
+		a(href="https://signup.betanysports.eu?&utm_campaign=canadian-sportsbook-offer-all-a-DBC3018-signup-joinCTA2", class='btn w-[280px] h-[45px] m:w-[355px] m:h-[75px] text-[14px] m:text-[24px] uppercase' id='joinNowFourWays') join now
