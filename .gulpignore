@@ -1,0 +1,54 @@
+# Archivos y directorios a ignorar por Gulp
+node_modules/
+.git/
+.gitignore
+README.md
+OPTIMIZATIONS.md
+*.log
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración
+.env
+.env.local
+.env.production
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos temporales
+tmp/
+temp/
+.tmp/
+
+# Archivos de build previos
+dist/
+build/
+
+# Archivos de cache
+.cache/
+*.cache
+
+# Archivos de documentación
+docs/
+*.md
+
+# Archivos de testing
+test/
+tests/
+*.test.js
+*.spec.js
+
+# Archivos de configuración de herramientas
+.eslintrc*
+.prettierrc*
+.babelrc*
+tsconfig.json
+
+# Archivos de lock
+package-lock.json
+yarn.lock
+pnpm-lock.yaml 
