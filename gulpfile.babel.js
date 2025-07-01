@@ -174,8 +174,17 @@ gulp.task('compress', () => {
 	return Promise.resolve();
 });
 
+// Tarea para limpiar la carpeta public
 gulp.task('clean', () => {
-	return deleteAsync(['public/**/*']);
+	return deleteAsync(['public'], { force: true });
+});
+
+// Tarea para crear la carpeta public
+gulp.task('create-public', (done) => {
+	if (!fs.existsSync('public')) {
+		fs.mkdirSync('public');
+	}
+	done();
 });
 
 gulp.task(
@@ -185,34 +194,31 @@ gulp.task(
 			server: {
 				baseDir: 'public',
 			},
-			port: 3000, // Especificar un puerto
-			notify: false, // Mantener las notificaciones desactivadas
-			open: true, // Cambiar a true para que abra el navegador
-			browser: 'default', // Usar el navegador por defecto
+			port: 3000,
+			notify: false,
+			open: true,
+			browser: 'default',
 		});
 
-		// Watch para Pug
-		gulp.watch('src/pug/**/*.pug', (done) => {
-			gulp.series('pug', 'sass')();
-			browserSync.reload();
-			done();
+		// Watch para Pug y Sass juntos
+		watch(['src/pug/**/*.pug', 'src/scss/**/*.scss'], () => {
+			gulp.series('pug', 'sass')(() => {
+				browserSync.reload();
+			});
 		});
-
-		// Watch para Sass y Tailwind
-		gulp.watch(['src/scss/**/*.scss', 'tailwind.config.js'], gulp.series('sass'));
 
 		// Watch para Scripts
-		gulp.watch('src/js/**/*.js', (done) => {
-			gulp.series('scripts')();
-			browserSync.reload();
-			done();
+		watch('src/js/**/*.js', () => {
+			gulp.series('scripts')(() => {
+				browserSync.reload();
+			});
 		});
 
 		// Watch para datos
-		gulp.watch(['src/data/**/*.json', 'src/md/**/*.md'], (done) => {
-			gulp.series('pug', 'sass')();
-			browserSync.reload();
-			done();
+		watch(['src/data/**/*.json', 'src/md/**/*.md'], () => {
+			gulp.series('pug', 'sass')(() => {
+				browserSync.reload();
+			});
 		});
 
 		// Watch para Assets con sincronización
@@ -220,6 +226,6 @@ gulp.task(
 	})
 );
 
-gulp.task('dev', gulp.series('clean', 'serve'));
-gulp.task('build', gulp.series('pug', 'sass', 'scripts', 'sync-assets', 'compress'));
+gulp.task('dev', gulp.series('clean', 'create-public', 'serve'));
+gulp.task('build', gulp.series('clean', 'create-public', 'pug', 'sass', 'scripts', 'sync-assets', 'compress'));
 gulp.task('default', gulp.series('dev'));
