@@ -1,9 +1,8 @@
-@import "core/unbounce-reset";
 @import "tailwindcss";
-@import "core/prism";
 @import "core/media-queries";
 @import "core/fonts";
 @import "components/components";
+@import "core/prism";
 
 @theme {
 	--breakpoint-md: initial;
@@ -18,11 +17,8 @@
 }
 
 :root{
-	--bg-body: #141e52;
-	--base-color: #192666;
-	--header-height: 80px;
-	--bg-footer: #192666;
-	
+	--bg-body: white;
+	--header-height: 80px;	
 	@media (min-width: 800px) {
 		--header-height: 152px;
 	}
@@ -35,119 +31,11 @@
 	width: 100%;
 	max-width: 3500px;
 	margin: 0 auto;
-	// padding: 0 20px;
-	
-	
+	padding: 0 20px;
 }
 .container{
-	// border: 1px solid white;
 	width: 100%;
-	max-width: 320px;
+	max-width: 1600px;
 	margin: 0 auto;
-	padding: 0 20px;
-	@media (min-width: 380px) {
-		padding: 0;
-	}
-	@media (min-width: 800px) {
-		max-width: 700px;
-	}
-	@media (min-width: 1300px) {
-		max-width: 1200px;
-	}
-}
 
-.bg-container-1{	
-	background-image: url("https://images.betanysports.eu/wp-content/uploads/lp_sm_bg_2-scaled.webp");
-	background-size: cover 300px;
-	background-position: top;
-	background-repeat: no-repeat;
-	
-	@include from(m){
-		background-size: cover;
-	}
-	@include from(lg){
-		background-size: cover ;		
-	}
-}
-
-.bg-container-2{	
-	background-image: url("https://images.betanysports.eu/wp-content/uploads/lp_sm_bg_2_short.png");
-	background-size: 100% 600px;
-	background-position: top;
-	background-repeat: no-repeat;
-	
-	@include from(m){
-		background-size: 100% 900px;
-	}
-	@include from(lg){
-		background-size: 100% 1000px;	
-	}
-}
-
-
-.bas-gold-text {
-	background: linear-gradient(90deg, #C49430 0%, #FEFACA 26%, #C3922E 49%, #E4C671 68%, #FDF6C1 86%, #FFFBCC 100%);
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-.bas-gold-text-yellow {
-	background: var(--Gradients-Linear-Gold, linear-gradient(180deg, #FFE684 0%, var(--Secondary-Sunglow-Dark, #E69539) 100%));
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	font-style: normal;
-	font-weight: 700;
-	line-height: normal;
-}
-
-.anchor{
-	color: #1BB96B;
-	text-decoration: underline !important;
-}
-
-.anchor-bold{
-	color: #1BB96B;
-	font-weight: 700;
-}
-
-.anchor-bold-u{
-	color: #1BB96B;
-	font-weight: 700;
-	text-decoration: underline !important;
-}
-
-.bas-gold-text::selection {
-    background: #9e852e; // Fondo dorado para la selección.
-    -webkit-text-fill-color: white; // Texto blanco para la selección en navegadores WebKit.
-    color: white; // Texto blanco para la selección en otros navegadores.
-    -webkit-background-clip: border-box; // Desactiva el background-clip durante la selección.
-    background-clip: border-box;
-}
-
-.btn { 
-	background: linear-gradient(180deg, #1BB96B 0%, #007102 100%);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: white;
-	border-radius: 12px;
-	text-transform: uppercase;
-	font-weight: bold;
-	&:hover{
-		background: #007102;
-	}
-}
-.blue-box-gradient{
-	@include from(m){
-		border-radius: 16px;
-		background: linear-gradient(180deg, #000DC1 0%, #192666 100%);
-	}
-	
-}
-
-.light-blue-gradient{
-	border-radius: 24px;
-	border: 2px solid rgba(255, 255, 255, 0.20);
-	background: linear-gradient(152deg, rgba(255, 255, 255, 0.01) 6.29%, rgba(20, 30, 82, 0.20) 62.43%), rgba(34, 61, 200, 0.60);
 }
