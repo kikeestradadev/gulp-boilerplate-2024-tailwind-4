@@ -1,0 +1,53 @@
+block config
+	-let currentPage 		= 'home'
+	-let content 			= 'My Page'
+	-let siteName 			= 'GulpBoilerplate'
+	-let pageDescription 	= 'Here is the description Page.'
+doctype html
+html(lang='en' prefix='og: http://ogp.me/ns#', class='no-js') 
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(name='format-detection', content='telephone=no')
+		meta(name="theme-color", content="#0096D9")
+		link(rel="shortcut icon", type="image/png", href="./assets/img/icon_1024.png")
+		link(rel="apple-touch-icon", href="./assets/img/icon_1024.png")
+		meta(name="description", content="Breve descripción del sitio web que ayuda en el SEO.")
+		meta(http-equiv="Content-Security-Policy", content="upgrade-insecure-requests")
+		meta(http-equiv="Cache-Control", content="no-cache, no-store, must-revalidate")
+		meta(http-equiv="Expires", content="0")
+		meta(http-equiv="Pragma", content="no-cache") 
+		link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css")
+		link(rel="preconnect", href="https://fonts.googleapis.com")
+		link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+		//- link(href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap", rel="stylesheet")
+		link(rel="stylesheet" href="styles.css")
+		title= currentPage.slice(0,1).toUpperCase() + currentPage.slice(1) + " | " + siteName
+	body(class=`${currentPage}`, itemscope itemtype="http://schema.org/WebPage" )
+		div(class='flex flex-col min-h-screen bg-[var(--bg-body)] bg-container-2 overflow-x-hidden')
+			//- here start the Main Header
+			header(class='main-container')
+				block main-header
+			//- here ends the Main Header
+			//- here start the Main Container
+			main(class='flex-grow main-container')
+				block main-container
+			//- here ends the Main Container
+			//- here start the Main Footer 
+			footer(class='main-container bg-[var(--bg-footer)]')
+				block main-footer
+			//- here ends the Main Footer
+		script(src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js")
+		script(src="https://415cfdd06d5449eab5801f07ab564c4f.js.ubembed.com" async)
+		//- Hotjar Tracking Code for https://dev-site.betanysports.eu/
+		script.
+			(function(h,o,t,j,a,r){
+				h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+				h._hjSettings={hjid:3616222,hjsv:6};
+				a=o.getElementsByTagName('head')[0];
+				r=o.createElement('script');r.async=1;
+				r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+				a.appendChild(r);
+			})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+		script(src="index.js")
+		block scripts
