@@ -665,6 +665,12 @@
   .min-h-32 {
     min-height: calc(var(--spacing) * 32);
   }
+  .min-h-\[var\(--header-height\)\] {
+    min-height: var(--header-height);
+  }
+  .min-h-screen {
+    min-height: 100vh;
+  }
   .w-6 {
     width: calc(var(--spacing) * 6);
   }
@@ -674,8 +680,8 @@
   .w-full {
     width: 100%;
   }
-  .flex-grow {
-    flex-grow: 1;
+  .flex-1 {
+    flex: 1;
   }
   .border-collapse {
     border-collapse: collapse;
@@ -738,6 +744,9 @@
   }
   .bg-\[red\] {
     background-color: red;
+  }
+  .bg-\[var\(--base-color\)\] {
+    background-color: var(--base-color);
   }
   .bg-\[var\(--bg-body\)\] {
     background-color: var(--bg-body);
@@ -1236,6 +1245,8 @@ pre[class*=language-] {
   cursor: help;
 }
 :root {
+  --base-color: steelblue;
+  --header-height: 80px;
   --bg-body: white;
   --header-height: 80px;
 }
