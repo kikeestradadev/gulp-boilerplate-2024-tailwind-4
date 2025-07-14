@@ -1,25 +1,12 @@
-@import "tailwindcss";
 @import "core/media-queries";
 @import "core/fonts";
 @import "components/components";
 @import "core/prism";
 
-@theme {
-	--breakpoint-md: initial;
-	--breakpoint-2xl: initial;
-    --breakpoint-s: 0;
-    --breakpoint-sm: 480px;
-    --breakpoint-m: 800px;
-    --breakpoint-l: 960px;
-    --breakpoint-lg: 1300px;
-    --breakpoint-xl: 1600px;
-    --breakpoint-xxl: 1900px;	
-}
-
 :root{
 	--base-color: steelblue;
 	--header-height: 80px;
-	--bg-body: white;
+	// --bg-body: blue;
 	--header-height: 80px;	
 	@media (min-width: 800px) {
 		--header-height: 152px;
@@ -40,4 +27,10 @@
 	max-width: 1600px;
 	margin: 0 auto;
 
+}
+
+body{
+	@include fromTo(m,xl){
+		background-color: red;
+	}
 }

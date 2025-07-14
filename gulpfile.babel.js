@@ -67,8 +67,28 @@ gulp.task('pug', () => {
 		.pipe(gulp.dest('public'));
 });
 
+// Tarea separada para Tailwind CSS 4
+gulp.task('tailwind', () => {
+	return gulp.src('src/scss/tailwind.css')
+		.pipe(plumber({
+			errorHandler: function(err) {
+				console.log(err.message);
+				this.emit('end');
+			}
+		}))
+		.pipe(sourcemaps.init())
+		.pipe(postcss([
+			tailwindcss,
+			autoprefixer()
+		]))
+		.pipe(sourcemaps.write('.'))
+		.pipe(gulp.dest('public/'))
+		.pipe(browserSync.stream({match: '**/*.css'}));
+});
+
+// Tarea separada para Sass (sin Tailwind)
 gulp.task('sass', () => {
-	return gulp.src('src/scss/*.scss')
+	return gulp.src('src/scss/styles.scss')
 		.pipe(plumber({
 			errorHandler: function(err) {
 				console.log(err.message);
@@ -90,7 +110,6 @@ gulp.task('sass', () => {
 			}
 		}).on('error', sass.logError))
 		.pipe(postcss([
-			tailwindcss,
 			autoprefixer()
 			// Removed cssnano to prevent compression
 		]))
@@ -125,7 +144,7 @@ gulp.task('assets', () => {
 
 gulp.task(
 	'serve',
-	gulp.series('pug', 'sass', 'scripts', 'assets', () => {
+	gulp.series('pug', 'tailwind', 'sass', 'scripts', 'assets', () => {
 		browserSync.init({
 			server: {
 				baseDir: 'public',
@@ -138,13 +157,16 @@ gulp.task(
 
 		// Watch para Pug
 		gulp.watch('src/pug/**/*.pug', (done) => {
-			gulp.series('pug', 'sass')();
+			gulp.series('pug', 'tailwind', 'sass')();
 			browserSync.reload();
 			done();
 		});
 
-		// Watch para Sass y Tailwind
-		gulp.watch(['src/scss/**/*.scss', 'tailwind.config.js'], gulp.series('sass'));
+		// Watch para Tailwind CSS
+		gulp.watch(['src/scss/tailwind.css', 'tailwind.config.js'], gulp.series('tailwind'));
+
+		// Watch para Sass (sin Tailwind)
+		gulp.watch(['src/scss/styles.scss', 'src/scss/**/*.scss'], gulp.series('sass'));
 
 		// Watch para Scripts
 		gulp.watch('src/js/**/*.js', (done) => {
@@ -155,7 +177,7 @@ gulp.task(
 
 		// Watch para datos
 		gulp.watch(['src/data/**/*.json', 'src/md/**/*.md'], (done) => {
-			gulp.series('pug', 'sass')();
+			gulp.series('pug', 'tailwind', 'sass')();
 			browserSync.reload();
 			done();
 		});
@@ -170,5 +192,5 @@ gulp.task(
 );
 
 gulp.task('dev', gulp.series('serve'));
-gulp.task('build', gulp.series('pug', 'sass', 'scripts', 'assets'));
+gulp.task('build', gulp.series('pug', 'tailwind', 'sass', 'scripts', 'assets'));
 gulp.task('default', gulp.series('dev'));
