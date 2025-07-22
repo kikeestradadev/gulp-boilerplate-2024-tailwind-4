@@ -700,12 +700,6 @@
   .bg-\[gray\] {
     background-color: gray;
   }
-  .bg-\[green\] {
-    background-color: green;
-  }
-  .bg-\[red\] {
-    background-color: red;
-  }
   .bg-\[var\(--base-color\)\] {
     background-color: var(--base-color);
   }
@@ -838,13 +832,6 @@
   .m\:grid-cols-3 {
     @media (width >= 800px) {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-  .m\:max-lg\:bg-\[blue\] {
-    @media (width >= 800px) {
-      @media (width < 1300px) {
-        background-color: blue;
-      }
     }
   }
   .l\:w-1\/4 {
