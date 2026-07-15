@@ -21,25 +21,22 @@ html(lang='en' prefix='og: http://ogp.me/ns#', class='no-js')
 		link(rel="preconnect" href="https://fonts.googleapis.com")
 		link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
 		link(href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet")
-
+		link(rel="stylesheet" href="./assets/prism.css")
 		link(rel="stylesheet" href="tailwind.css")
-		link(rel="stylesheet" href="styles.css")
-
 		title= currentPage.slice(0,1).toUpperCase() + currentPage.slice(1) + " | " + siteName
-	body(class=`${currentPage} bg-[var(--bg-body)] flex flex-col min-h-screen `, itemscope itemtype="http://schema.org/WebPage" )
-		div(class='flex flex-col') 
-			//- here start the Main Header
-			header(class='main-container bg-[var(--base-color)] min-h-[var(--header-height)]')
-				block main-header
-			//- here ends the Main Header
-			//- here start the Main Container
-			main(class='flex-1')
-				block main-container
-			//- here ends the Main Container
-			//- here start the Main Footer 
-			footer(class='main-container bg-[var(--base-color)] min-h-[var(--header-height)]')
-				block main-footer
-			//- here ends the Main Footer
+	body(class=`${currentPage} bg-[var(--bg-body)] flex flex-col min-h-screen pt-[var(--header-height)]`, itemscope itemtype="http://schema.org/WebPage" )
+		//- here start the Main Header
+		header(class='fixed top-0 left-0 z-10 w-full max-w-[3500px] mx-auto px-[15px] bg-[var(--base-color)] min-h-[var(--header-height)]')
+			block main-header
+		//- here ends the Main Header
+		//- here start the Main Container
+		main(class='flex-1')
+			block main-container
+		//- here ends the Main Container
+		//- here start the Main Footer 
+		footer(class='w-full max-w-[3500px] mx-auto px-[15px] bg-[var(--base-color)] min-h-[var(--header-height)]')
+			block main-footer
+		//- here ends the Main Footer
 		script(src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js")
 		script(src="index.js")
 		block scripts

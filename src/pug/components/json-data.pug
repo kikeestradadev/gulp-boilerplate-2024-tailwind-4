@@ -8,8 +8,8 @@ mixin example2(slideImage, slideTitle, sport, league)
 		p=slideTitle
 		p=sport
 		p=league
-section(class="main-container border border-[steelblue]") 
-	div(class="container  border border-[tomato]") 
+section(class="w-full max-w-[3500px] mx-auto px-[15px] border border-[steelblue]") 
+	div(class="w-full max-w-[1600px] mx-auto border border-[tomato]") 
 		-for (var i = 0; i < slider1.length; i++)
 			-var item = slider1[i]
 			+example1(item.img, item.title)

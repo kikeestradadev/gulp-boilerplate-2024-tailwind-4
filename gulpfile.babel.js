@@ -2,10 +2,7 @@ import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import pug from 'gulp-pug';
 import browserSync from 'browser-sync';
-import gulpSass from 'gulp-sass';
-import * as sassCompiler from 'sass';
 import postcss from 'gulp-postcss';
-import cssnano from 'cssnano';
 import browserify from 'browserify';
 import babelify from 'babelify';
 import source from 'vinyl-source-stream';
@@ -20,9 +17,6 @@ import tailwindcss from '@tailwindcss/postcss';
 import autoprefixer from 'autoprefixer';
 import copy from 'gulp-copy';
 import htmlmin from 'gulp-htmlmin';
-
-// Configuración del compilador Sass usando la nueva API
-const sass = gulpSass(sassCompiler);
 
 // Función para leer todos los archivos JSON en un directorio
 const getJsonData = () => {
@@ -67,7 +61,7 @@ gulp.task('pug', () => {
 		.pipe(gulp.dest('public'));
 });
 
-// Tarea separada para Tailwind CSS 4
+// Tarea Tailwind CSS 4
 gulp.task('tailwind', () => {
 	return gulp.src('src/scss/tailwind.css')
 		.pipe(plumber({
@@ -86,54 +80,22 @@ gulp.task('tailwind', () => {
 		.pipe(browserSync.stream({match: '**/*.css'}));
 });
 
-// Tarea separada para Sass (sin Tailwind)
-gulp.task('sass', () => {
-	return gulp.src('src/scss/styles.scss')
-		.pipe(plumber({
-			errorHandler: function(err) {
-				console.log(err.message);
-				this.emit('end');
-			}
-		}))
-		.pipe(sourcemaps.init())
-		.pipe(sass({
-			outputStyle: 'expanded', 
-			includePaths: ['node_modules'],
-			quietDeps: true,
-			logger: {
-				warn: function(message) {
-					// Ignorar mensajes de deprecación
-					if (!message.includes('legacy-js-api') && !message.includes('@import rules are deprecated')) {
-						console.warn(message);
-					}
-				}
-			}
-		}).on('error', sass.logError))
-		.pipe(postcss([
-			autoprefixer()
-			// Removed cssnano to prevent compression
-		]))
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest('public/'))
-		.pipe(browserSync.stream({match: '**/*.css'}));
-});
-
 gulp.task('scripts', () => {
 	return browserify('src/js/index.js')
 		.transform(babelify)
 		.bundle()
-		.pipe(source('index.js')) // Mantén el nombre original
+		.pipe(source('index.js'))
 		.pipe(buffer())
 		.pipe(sourcemaps.init({ loadMaps: true }))
 		.pipe(
 			minify({
 				ext: {
-					min: '.js', // Mantén la extensión .js sin agregar .min
+					min: '.js',
 				},
 			})
 		)
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest('public/')); // Coloca el archivo en public/
+		.pipe(gulp.dest('public/'));
 });
 
 // Tarea para copiar assets
@@ -144,45 +106,37 @@ gulp.task('assets', () => {
 
 gulp.task(
 	'serve',
-	gulp.series('pug', 'tailwind', 'sass', 'scripts', 'assets', () => {
+	gulp.series('pug', 'tailwind', 'scripts', 'assets', () => {
 		browserSync.init({
 			server: {
 				baseDir: 'public',
 			},
-			port: 3000, // Especificar un puerto
-			notify: false, // Mantener las notificaciones desactivadas
-			open: true, // Cambiar a true para que abra el navegador
-			browser: 'default', // Usar el navegador por defecto
+			port: 3000,
+			notify: false,
+			open: true,
+			browser: 'default',
 		});
 
-		// Watch para Pug
 		gulp.watch('src/pug/**/*.pug', (done) => {
-			gulp.series('pug', 'tailwind', 'sass')();
+			gulp.series('pug', 'tailwind')();
 			browserSync.reload();
 			done();
 		});
 
-		// Watch para Tailwind CSS
 		gulp.watch(['src/scss/tailwind.css', 'tailwind.config.js'], gulp.series('tailwind'));
 
-		// Watch para Sass (sin Tailwind)
-		gulp.watch(['src/scss/styles.scss', 'src/scss/**/*.scss'], gulp.series('sass'));
-
-		// Watch para Scripts
 		gulp.watch('src/js/**/*.js', (done) => {
 			gulp.series('scripts')();
 			browserSync.reload();
 			done();
 		});
 
-		// Watch para datos
 		gulp.watch(['src/data/**/*.json', 'src/md/**/*.md'], (done) => {
-			gulp.series('pug', 'tailwind', 'sass')();
+			gulp.series('pug', 'tailwind')();
 			browserSync.reload();
 			done();
 		});
 
-		// Watch para Assets
 		gulp.watch('src/assets/**/*', (done) => {
 			gulp.series('assets')();
 			browserSync.reload();
@@ -192,5 +146,5 @@ gulp.task(
 );
 
 gulp.task('dev', gulp.series('serve'));
-gulp.task('build', gulp.series('pug', 'tailwind', 'sass', 'scripts', 'assets'));
+gulp.task('build', gulp.series('pug', 'tailwind', 'scripts', 'assets'));
 gulp.task('default', gulp.series('dev'));

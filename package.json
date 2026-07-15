@@ -54,7 +54,6 @@
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^10.0.0",
     "gulp-pug": "^5.0.0",
-    "gulp-sass": "^5.1.0",
     "gulp-sitemap": "^8.0.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-strip-css-comments": "^3.0.0",
@@ -68,7 +67,6 @@
     "jstransformer-markdown-it": "^3.0.0",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "sass": "^1.69.5",
     "tailwindcss": "^4.0.14",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
