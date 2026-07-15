@@ -1952,14 +1952,16 @@ Prism.languages.js = Prism.languages.javascript;
 "use strict";
 
 var _internalModule = _interopRequireDefault(require("./modules/internalModule"));
+var _storybookTabs = _interopRequireDefault(require("./modules/storybookTabs"));
 var _prismjs = _interopRequireDefault(require("prismjs"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 (function () {
   (0, _internalModule["default"])();
-  _prismjs["default"].highlightAll(); // Corrected: Use Prism.highlightAll() instead of undefined prismjs()
+  (0, _storybookTabs["default"])(_prismjs["default"]);
+  _prismjs["default"].highlightAll();
 })();
 
-},{"./modules/internalModule":3,"prismjs":1}],3:[function(require,module,exports){
+},{"./modules/internalModule":3,"./modules/storybookTabs":4,"prismjs":1}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1970,6 +1972,51 @@ var internalModule = function internalModule() {
   console.log('Hola internal Module');
 };
 var _default = exports["default"] = internalModule;
+
+},{}],4:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var storybookTabs = function storybookTabs(Prism) {
+  var sections = document.querySelectorAll('[data-storybook]');
+  sections.forEach(function (section) {
+    var tabs = section.querySelectorAll('[data-storybook-tab]');
+    var panels = section.querySelectorAll('[data-storybook-panel]');
+    var highlightMarkup = function highlightMarkup() {
+      section.querySelectorAll('[data-storybook-panel="markup"] code').forEach(function (block) {
+        Prism.highlightElement(block);
+      });
+    };
+    var setActiveTab = function setActiveTab(activeTab) {
+      var target = activeTab.dataset.storybookTab;
+      tabs.forEach(function (tab) {
+        var isActive = tab === activeTab;
+        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        tab.classList.toggle('text-[var(--first-color)]', isActive);
+        tab.classList.toggle('border-[var(--first-color)]', isActive);
+        tab.classList.toggle('text-gray-500', !isActive);
+        tab.classList.toggle('border-transparent', !isActive);
+      });
+      panels.forEach(function (panel) {
+        var isActive = panel.dataset.storybookPanel === target;
+        panel.classList.toggle('hidden', !isActive);
+        panel.classList.toggle('storybook__panel--active', isActive);
+      });
+      if (target === 'markup') {
+        highlightMarkup();
+      }
+    };
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        return setActiveTab(tab);
+      });
+    });
+  });
+};
+var _default = exports["default"] = storybookTabs;
 
 },{}]},{},[2]);
 

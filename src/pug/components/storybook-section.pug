@@ -1,0 +1,41 @@
+mixin storybookSection(title, subtitle)
+	section(class="w-full max-w-[3500px] mx-auto px-[15px] py-10" data-storybook)
+		div(class="w-full max-w-[1600px] mx-auto")
+			if title
+				h2(class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold mb-2")= title
+			if subtitle
+				h3(class="text-[length:var(--h3-size)] leading-[length:var(--h3-line)] font-semibold mb-6 text-[var(--paragraph-color)]")= subtitle
+
+			div(class="storybook__preview mb-8 rounded-lg border border-gray-200 bg-white p-6")
+				block preview
+
+			div(class="storybook__tabs flex border-b border-gray-200" role="tablist")
+				button(
+					class="storybook__tab px-4 py-3 text-sm font-semibold text-[var(--first-color)] border-b-2 border-[var(--first-color)]"
+					type="button"
+					role="tab"
+					aria-selected="true"
+					data-storybook-tab="markdown"
+				) Documentación
+				button(
+					class="storybook__tab px-4 py-3 text-sm font-semibold text-gray-500 border-b-2 border-transparent"
+					type="button"
+					role="tab"
+					aria-selected="false"
+					data-storybook-tab="markup"
+				) Marcado
+
+			div(
+				class="storybook__panel storybook__panel--active rounded-b-lg border border-t-0 border-gray-200 bg-gray-50 p-6"
+				data-storybook-panel="markdown"
+				role="tabpanel"
+			)
+				div(class="storybook__markdown text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]")
+					block markdown
+
+			div(
+				class="storybook__panel hidden rounded-b-lg border border-t-0 border-gray-200 overflow-hidden"
+				data-storybook-panel="markup"
+				role="tabpanel"
+			)
+				block markup
