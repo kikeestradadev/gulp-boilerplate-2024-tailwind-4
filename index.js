@@ -1954,15 +1954,8 @@ Prism.languages.js = Prism.languages.javascript;
 var _internalModule = _interopRequireDefault(require("./modules/internalModule"));
 var _prismjs = _interopRequireDefault(require("prismjs"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
-// import deleteUnbounceReset from './unbounceFeatures/deleteUnbounceReset'
-// import insertMetaTags from './unbounceFeatures/insertMetaTags'
-// import unbounceCookie from './unbounceFeatures/unbounceCookie'
-
 (function () {
   (0, _internalModule["default"])();
-  // deleteUnbounceReset();
-  // insertMetaTags();
-  // unbounceCookie();
   _prismjs["default"].highlightAll(); // Corrected: Use Prism.highlightAll() instead of undefined prismjs()
 })();
 
