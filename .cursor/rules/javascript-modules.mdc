@@ -1,0 +1,42 @@
+---
+description: Convencion de modulos JavaScript con constante, export default e importacion central en index.js
+globs: "src/js/**/*.js"
+alwaysApply: false
+---
+
+# Modulos JavaScript
+
+Cada funcionalidad propia debe vivir en un archivo dentro de `src/js/modules/`.
+
+## Modulo
+
+Declara una constante con `const`, asigna una funcion flecha y exportala con `export default`.
+
+```js
+const internalModule = () => {
+	console.log('Hola internal Module');
+};
+
+export default internalModule;
+```
+
+## Entrada principal
+
+Importa cada modulo en `src/js/index.js` y ejecutalo dentro de la funcion autoejecutable.
+
+```js
+import internalModule from './modules/internalModule';
+
+(() => {
+	internalModule();
+})();
+```
+
+## Reglas
+
+1. Usa un archivo por modulo dentro de `src/js/modules/`.
+2. El nombre de la constante debe describir el modulo y usar `camelCase`.
+3. Usa funciones flecha asignadas a `const`; no declares funciones globales.
+4. Cada modulo propio debe tener un unico `export default`.
+5. Importa e inicializa los modulos desde `src/js/index.js`.
+6. No escribas la implementacion de un modulo directamente en `index.js`.
