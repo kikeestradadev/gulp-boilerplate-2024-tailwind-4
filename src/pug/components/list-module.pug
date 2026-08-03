@@ -1,10 +1,26 @@
-section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]") 
-	div(class="w-full max-w-[var(--container)] mx-auto border border-[tomato]") 
-		ul
-			-for(let i = 1; i<=5; i++)
-				li lorem
-					| #{i}
-		ol
-			-for(let i = 1; i<=5; i++)
-				li lorem
-					| #{i}
+section(id='listas' class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]")
+	div(class="w-full max-w-[var(--container)] mx-auto border border-[tomato]")
+		h2(class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold mb-6") Listas
+		div(class="grid gap-8 m:grid-cols-2")
+			div
+				h3(class="text-[length:var(--h3-size)] leading-[length:var(--h3-line)] font-semibold mb-4") Unordered list (ul)
+				ul(class="my-0 list-disc pl-10 text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]")
+					li(class="mb-2") Item de lista no ordenada uno
+					li(class="mb-2") Item de lista no ordenada dos
+					li(class="mb-2") Item de lista no ordenada tres
+						ul(class="mt-2 list-disc pl-8")
+							li(class="mb-2") Subitem anidado A
+							li(class="mb-2") Subitem anidado B
+					li(class="mb-2") Item de lista no ordenada cuatro
+					li Item de lista no ordenada cinco
+			div
+				h3(class="text-[length:var(--h3-size)] leading-[length:var(--h3-line)] font-semibold mb-4") Ordered list (ol)
+				ol(class="my-0 list-decimal pl-10 text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]")
+					li(class="mb-2") Primer paso o punto numerado
+					li(class="mb-2") Segundo paso o punto numerado
+					li(class="mb-2") Tercer paso o punto numerado
+						ol(class="mt-2 list-decimal pl-8")
+							li(class="mb-2") Subpaso 3.1
+							li(class="mb-2") Subpaso 3.2
+					li(class="mb-2") Cuarto paso o punto numerado
+					li Quinto paso o punto numerado

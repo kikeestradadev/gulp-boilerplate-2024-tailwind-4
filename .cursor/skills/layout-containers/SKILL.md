@@ -1,39 +1,55 @@
 ---
 name: layout-containers
 description: >-
-  Enforce Main Container (--main-container: 3500px) and Container
-  (--container: 1600px) layout tokens via Tailwind max-w-[var(--token)].
-  Use when creating or editing Pug/HTML sections, headers, footers, storybook
-  modules, or any layout that needs max-width 3500px / 1600px containers.
+  Enforce module shell: section with Main Container (--main-container) then
+  Container (--container). Outer uses w-full, max-w-[var(--main-container)],
+  mx-auto, px-[15px] only. Inner has no side padding. Vertical rhythm comes from
+  main gap-[var(--section-gap)] — never py/pt/pb on section shells. Use when
+  creating or editing Pug/HTML modules, sections, or storybook components.
 ---
 
 # Layout Containers
 
 ## Tokens (`src/scss/tailwind.css` `:root`)
 
-- `--main-container: 3500px` — outer wrapper (Main Container)
-- `--container: 1600px` — inner content (Container)
+- `--main-container: 3500px` — outer `section`
+- `--container: 1600px` — inner content wrapper
+- `--section-gap: 2.5rem` (desktop `4rem`) — space between sections via `main`
 
-## Always use
+## Module shell (required)
 
 ```pug
 section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px]")
 	div(class="w-full max-w-[var(--container)] mx-auto")
+		//- module content
 ```
+
+| Layer | Classes |
+|-------|---------|
+| `section` | `w-full max-w-[var(--main-container)] mx-auto px-[15px]` |
+| inner `div` | `w-full max-w-[var(--container)] mx-auto` (no `px-[15px]`) |
+
+## Vertical spacing
+
+`main` owns the gap:
 
 ```pug
-header(class="w-full max-w-[var(--main-container)] mx-auto px-[15px]")
-footer(class="w-full max-w-[var(--main-container)] mx-auto px-[15px]")
+main(class="flex-1 flex flex-col gap-[var(--section-gap)]")
 ```
 
-## Never use
+Do **not** add `py-*`, `pt-*`, or `pb-*` on module `section` shells.
 
-- `max-w-[3500px]`
-- `max-w-[1600px]`
-- Hardcoded px values that duplicate these tokens
+## Never
 
-## Checklist when adding a section
+- `max-w-[3500px]` / `max-w-[1600px]`
+- `px-[15px]` on the inner container
+- `py-10` (or any vertical padding) on the outer `section`
+- Outer shell that is not a `section` for page modules
 
-1. Outer element → `w-full max-w-[var(--main-container)] mx-auto` (+ `px-[15px]` if Main Container)
-2. Inner element → `w-full max-w-[var(--container)] mx-auto` (no side padding from this token)
-3. Confirm tokens exist in `:root`; do not invent alternate max-widths for the same role
+## Checklist
+
+1. Root tag is `section`.
+2. Outer: main-container token + lateral `px-[15px]` only.
+3. Inner: container token, no side padding.
+4. No vertical padding on the section; rely on `--section-gap`.
+5. Tokens exist in `:root`; tune spacing by editing the variable.

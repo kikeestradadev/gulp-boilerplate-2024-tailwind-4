@@ -10,8 +10,7 @@ html(lang='en' prefix='og: http://ogp.me/ns#', class='no-js')
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		meta(name='format-detection', content='telephone=no')
 		meta(name="theme-color", content="#0096D9")
-		link(rel="shortcut icon", type="image/png", href="./assets/img/icon_1024.png")
-		link(rel="apple-touch-icon", href="./assets/img/icon_1024.png")
+		link(rel="icon", href="./assets/sprite.svg", type="image/svg+xml")
 		meta(name="description", content="Breve descripción del sitio web que ayuda en el SEO.")
 		meta(http-equiv="Content-Security-Policy", content="upgrade-insecure-requests")
 		meta(http-equiv="Cache-Control", content="no-cache, no-store, must-revalidate")
@@ -24,17 +23,17 @@ html(lang='en' prefix='og: http://ogp.me/ns#', class='no-js')
 		link(rel="stylesheet" href="./assets/prism.css")
 		link(rel="stylesheet" href="tailwind.css")
 		title= currentPage.slice(0,1).toUpperCase() + currentPage.slice(1) + " | " + siteName
-	body(class=`${currentPage} bg-[var(--bg-body)] flex flex-col min-h-screen pt-[var(--header-height)]`, itemscope itemtype="http://schema.org/WebPage" )
+	body(class=`${currentPage} bg-[var(--bg-body)] flex flex-col items-center min-h-screen pt-[var(--header-height)]`, itemscope itemtype="http://schema.org/WebPage" )
 		//- here start the Main Header
-		header(class='fixed top-0 left-0 z-10 w-full max-w-[var(--main-container)] mx-auto px-[15px] bg-[var(--base-color)] min-h-[var(--header-height)]')
+		header(class='fixed top-0 left-0 right-0 z-10 w-full max-w-[var(--main-container)] mx-auto px-[15px] bg-[var(--base-color)] min-h-[var(--header-height)]')
 			block main-header
 		//- here ends the Main Header
 		//- here start the Main Container
-		main(class='flex-1')
+		main(class='flex-1 w-full max-w-[var(--main-container)] flex flex-col gap-[var(--section-gap)]')
 			block main-container
 		//- here ends the Main Container
 		//- here start the Main Footer 
-		footer(class='w-full max-w-[var(--main-container)] mx-auto px-[15px] bg-[var(--base-color)] min-h-[var(--header-height)]')
+		footer(class='w-full max-w-[var(--main-container)] mx-auto px-[15px] bg-[var(--base-color)] min-h-[var(--footer-height)]')
 			block main-footer
 		//- here ends the Main Footer
 		script(src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js")

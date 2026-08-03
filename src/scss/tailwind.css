@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@source "../pug/**/*.pug";
+@source "../js/**/*.js";
+
 @theme {
 	--breakpoint-md: initial;
 	--breakpoint-2xl: initial;
@@ -14,10 +17,13 @@
 }
 
 :root {
+	--bg-body: #ffffff;
 	--base-color: steelblue;
-	--header-height: 80px;
+	--header-height: 50px;
+	--footer-height: 150px;
 	--main-container: 3500px;
 	--container: 1600px;
+	--section-gap: 2.5rem;
 	--first-color: #007bdf;
 	--first-color-alt: #006dc6;
 	--second-color: #00cbff;
@@ -26,6 +32,12 @@
 	--third-color-alt: #ff2419;
 	--storybook-divider: #c4887a;
 	--paragraph-color: #1f2024;
+	--link-color: #007bdf;
+	--btn-primary: #007bdf;
+	--btn-primary-hover: #006dc6;
+	--btn-secondary: #7d7d7d;
+	--btn-secondary-hover: #555454;
+	--btn-text: #ffffff;
 
 	--h1-size: 2rem;
 	--h1-line: 2.5rem;
@@ -45,7 +57,9 @@
 
 @media (width >= 800px) {
 	:root {
-		--header-height: 152px;
+		--header-height: 80px;
+		--footer-height: 150px;
+		--section-gap: 4rem;
 		--h1-size: 2.5rem;
 		--h1-line: 3.5rem;
 		--h2-size: 2.5625rem;
@@ -70,6 +84,7 @@
 	}
 
 	a {
+		color: var(--link-color);
 		text-decoration: none;
 	}
 

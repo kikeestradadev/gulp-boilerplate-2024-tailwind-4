@@ -1,14 +1,48 @@
-section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]") 
-	div(class="w-full max-w-[var(--container)] mx-auto border border-[tomato]") 
-		table
-			thead
-				tr
-					-for(let i = 1; i<=5; i++)
-						th lorem
-							| #{i}
-			tbody
-				-for(let i = 1; i<=5; i++)
-					tr
-						-for(let i = 1; i<=5; i++)
-							td lorem
-								| #{i}
+section(id='tabla' class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]")
+	div(class="w-full max-w-[var(--container)] mx-auto border border-[tomato]")
+		h2(class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold mb-6") Tabla
+		div(class="w-full overflow-x-auto")
+			table(class="min-w-[40rem] w-max max-w-none border-collapse text-left text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]")
+				thead
+					tr(class="bg-[var(--first-color)] text-white")
+						th(class="whitespace-nowrap border border-[var(--first-color-alt)] px-4 py-3 font-semibold") Nombre
+						th(class="whitespace-nowrap border border-[var(--first-color-alt)] px-4 py-3 font-semibold") Rol
+						th(class="whitespace-nowrap border border-[var(--first-color-alt)] px-4 py-3 font-semibold") Estado
+						th(class="whitespace-nowrap border border-[var(--first-color-alt)] px-4 py-3 font-semibold") Fecha
+						th(class="whitespace-nowrap border border-[var(--first-color-alt)] px-4 py-3 font-semibold") Accion
+				tbody
+					tr(class="bg-white even:bg-gray-50")
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") Ana Lopez
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") Design
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") Activo
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") 2026-01-12
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3")
+							a(class="text-[var(--first-color)] [@media(hover:hover)_and_(pointer:fine)]:hover:text-[var(--first-color-alt)]" href="#") Ver
+					tr(class="bg-white even:bg-gray-50")
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") Carlos Ruiz
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") Frontend
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") Pendiente
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") 2026-02-03
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3")
+							a(class="text-[var(--first-color)] [@media(hover:hover)_and_(pointer:fine)]:hover:text-[var(--first-color-alt)]" href="#") Ver
+					tr(class="bg-white even:bg-gray-50")
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") Maria Soto
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") Backend
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") Activo
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") 2026-03-18
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3")
+							a(class="text-[var(--first-color)] [@media(hover:hover)_and_(pointer:fine)]:hover:text-[var(--first-color-alt)]" href="#") Ver
+					tr(class="bg-white even:bg-gray-50")
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") Luis Perez
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") QA
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") Inactivo
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") 2026-04-01
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3")
+							a(class="text-[var(--first-color)] [@media(hover:hover)_and_(pointer:fine)]:hover:text-[var(--first-color-alt)]" href="#") Ver
+					tr(class="bg-white even:bg-gray-50")
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") Elena Diaz
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") Product
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") Activo
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3") 2026-05-22
+						td(class="whitespace-nowrap border border-gray-200 px-4 py-3")
+							a(class="text-[var(--first-color)] [@media(hover:hover)_and_(pointer:fine)]:hover:text-[var(--first-color-alt)]" href="#") Ver

@@ -15,7 +15,7 @@ Use explicit Pug attributes for all classes and dynamic values.
 Prefer:
 
 ```pug
-header(class='fixed top-0 left-0 z-10 w-full max-w-[var(--main-container)] mx-auto px-[15px] bg-[var(--base-color)] min-h-[var(--header-height)]')
+header(class='fixed top-0 left-0 right-0 z-10 w-full max-w-[var(--main-container)] mx-auto px-[15px] bg-[var(--base-color)] min-h-[var(--header-height)]')
 section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px]")
 div(class="w-full max-w-[var(--container)] mx-auto")
 ```
@@ -28,6 +28,7 @@ section.w-full.max-w-[var(--main-container)].mx-auto
 .container
 ```
 
+Note: fixed headers need `left-0 right-0` (or `inset-x-0`) plus `mx-auto` so `max-w-[var(--main-container)]` centers on wide viewports.
 ## Checklist
 
 1. Use `tag(class="...")` or `tag(class='...')`.

@@ -2,29 +2,28 @@
 <html class="no-js" lang="en" prefix="og: http://ogp.me/ns#"> 
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <meta name="theme-color" content="#0096D9">
-    <link rel="shortcut icon" type="image/png" href="./assets/img/icon_1024.png">
-    <link rel="apple-touch-icon" href="./assets/img/icon_1024.png">
+    <link rel="icon" href="./assets/sprite.svg" type="image/svg+xml">
     <meta name="description" content="Breve descripción del sitio web que ayuda en el SEO.">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Expires" content="0">
     <meta http-equiv="Pragma" content="no-cache">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?t=1785788917044">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/prism.css?t=1784220221602">
-    <link rel="stylesheet" href="tailwind.css?t=1784220221602">
+    <link rel="stylesheet" href="./assets/prism.css?t=1785788917044">
+    <link rel="stylesheet" href="tailwind.css?t=1785788917044">
     <title>Home | Layouts</title>
   </head>
-  <body class="home bg-[var(--bg-body)] flex flex-col min-h-screen pt-[var(--header-height)]" itemscope itemtype="http://schema.org/WebPage">
-    <header class="fixed top-0 left-0 z-10 w-full max-w-[var(--main-container)] mx-auto px-[15px] bg-[var(--base-color)] min-h-[var(--header-height)]">
+  <body class="home bg-[var(--bg-body)] flex flex-col items-center min-h-screen pt-[var(--header-height)]" itemscope itemtype="http://schema.org/WebPage">
+    <header class="fixed top-0 left-0 right-0 z-10 w-full max-w-[var(--main-container)] mx-auto px-[15px] bg-[var(--base-color)] min-h-[var(--header-height)]">
     </header>
-    <main class="flex-1">
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] py-10">
+    <main class="flex-1 w-full max-w-[var(--main-container)] flex flex-col gap-[var(--section-gap)]">
+      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]" id="colores">
         <div class="w-full max-w-[var(--container)] mx-auto">
           <h2 class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold mb-6">Tabla de colores:</h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 m:grid-cols-3 l:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
@@ -79,7 +78,7 @@
           </div>
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] py-10">
+      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]" id="tipografia">
         <div class="w-full max-w-[var(--container)] mx-auto">
           <hr class="border-0 border-t-2 border-[var(--storybook-divider)] mb-8">
           <h1 class="text-[length:var(--h1-size)] leading-[length:var(--h1-line)] font-bold">h1</h1>
@@ -92,22 +91,28 @@
             <li class="text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</li>
             <li class="text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</li>
           </ul>
+          <ol class="my-6 list-decimal pl-10">
+            <li class="text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]">Primer punto tipografico de ejemplo.</li>
+            <li class="text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]">Segundo punto tipografico de ejemplo.</li>
+          </ol>
           <hr class="border-0 border-t-2 border-[var(--storybook-divider)] my-8">
           <p class="text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)] mb-5">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi,
-            dolorem autem maiores quis dolor, reprehenderit delectus quia dolore,
-            incidunt obcaecati sequi labore hic? Soluta doloremque vitae explicabo
-            assumenda fugit tenetur.
+            Texto con
+            <strong>negrita</strong>,
+            <em>cursiva</em> y un
+            <a href="#">Enlace de ejemplo</a>.
           </p>
           <p class="text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)] mb-5">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi,
             dolorem autem maiores quis dolor, reprehenderit delectus quia dolore,
             incidunt obcaecati sequi labore hic? Soluta doloremque vitae explicabo
-            assumenda fugit tenetur.
+            assumenda
+            <a href="#">fugit tenetur</a>.
           </p>
+          <p class="text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)] mb-0"><a href="#">Example of Link</a></p>
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
+      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]" id="editor-css"> 
         <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato] flex gap-2 flex-col">
           <pre class="language-css" contenteditable="true" spellcheck="false">
             <style contenteditable spellcheck="false" style="display: block; min-height: 100px;">.editor-css {
@@ -145,7 +150,7 @@
         	});
         });
       </script>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
+      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]" id="flex"> 
         <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]"> 
           <h1 class="text-[length:var(--h1-size)] leading-[length:var(--h1-line)] font-bold">Flex</h1>
           <div class="flex flex-wrap">
@@ -182,7 +187,7 @@
           </div>
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
+      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]" id="grid"> 
         <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]"> 
           <h2 class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold text-red-500">grid</h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 m:grid-cols-3 l:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 xxl:grid-cols-7 gap-5">
@@ -199,7 +204,7 @@
           </div>
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
+      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]" id="json-data"> 
         <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]"> 
                 <div><img src="assets/img4.jpg" style="width:100px">
                   <p>slider_item_1</p>
@@ -235,25 +240,44 @@
                 </div>
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
-        <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]"> 
-          <ul>
-            <li>lorem1</li>
-            <li>lorem2</li>
-            <li>lorem3</li>
-            <li>lorem4</li>
-            <li>lorem5</li>
-          </ul>
-          <ol>
-            <li>lorem1</li>
-            <li>lorem2</li>
-            <li>lorem3</li>
-            <li>lorem4</li>
-            <li>lorem5</li>
-          </ol>
+      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]" id="listas">
+        <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]">
+          <h2 class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold mb-6">Listas</h2>
+          <div class="grid gap-8 m:grid-cols-2">
+            <div>
+              <h3 class="text-[length:var(--h3-size)] leading-[length:var(--h3-line)] font-semibold mb-4">Unordered list (ul)</h3>
+              <ul class="my-0 list-disc pl-10 text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]">
+                <li class="mb-2">Item de lista no ordenada uno</li>
+                <li class="mb-2">Item de lista no ordenada dos</li>
+                <li class="mb-2">Item de lista no ordenada tres
+                  <ul class="mt-2 list-disc pl-8">
+                    <li class="mb-2">Subitem anidado A</li>
+                    <li class="mb-2">Subitem anidado B</li>
+                  </ul>
+                </li>
+                <li class="mb-2">Item de lista no ordenada cuatro</li>
+                <li>Item de lista no ordenada cinco</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-[length:var(--h3-size)] leading-[length:var(--h3-line)] font-semibold mb-4">Ordered list (ol)</h3>
+              <ol class="my-0 list-decimal pl-10 text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]">
+                <li class="mb-2">Primer paso o punto numerado</li>
+                <li class="mb-2">Segundo paso o punto numerado</li>
+                <li class="mb-2">Tercer paso o punto numerado
+                  <ol class="mt-2 list-decimal pl-8">
+                    <li class="mb-2">Subpaso 3.1</li>
+                    <li class="mb-2">Subpaso 3.2</li>
+                  </ol>
+                </li>
+                <li class="mb-2">Cuarto paso o punto numerado</li>
+                <li>Quinto paso o punto numerado</li>
+              </ol>
+            </div>
+          </div>
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
+      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]" id="markdown"> 
         <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]"> 
           <h1 class="text-[length:var(--h1-size)] leading-[length:var(--h1-line)] font-bold">Write Markdown in the html file</h1><ul>
 <li>Lorem ipsum dolor sit amet consectetur adipisicing <code>elit</code>.</li>
@@ -301,7 +325,7 @@
 
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
+      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]" id="sidebar"> 
         <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]"> 
           <h2 class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold">side bar</h2>
           <div class="flex flex-col lg:flex-row">
@@ -310,7 +334,7 @@
           </div>
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
+      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]" id="sprite-svg"> 
         <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato] flex gap-2 bg-[gray]"> 
           <svg width="28" height="28">
             <use xlink:href="./assets/sprite.svg#twitch"></use>
@@ -332,76 +356,81 @@
           </svg>
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
-        <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]"> 
-          <table>
-            <thead>
-              <tr>
-                <th>lorem1</th>
-                <th>lorem2</th>
-                <th>lorem3</th>
-                <th>lorem4</th>
-                <th>lorem5</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>lorem1</td>
-                <td>lorem2</td>
-                <td>lorem3</td>
-                <td>lorem4</td>
-                <td>lorem5</td>
-              </tr>
-              <tr>
-                <td>lorem1</td>
-                <td>lorem2</td>
-                <td>lorem3</td>
-                <td>lorem4</td>
-                <td>lorem5</td>
-              </tr>
-              <tr>
-                <td>lorem1</td>
-                <td>lorem2</td>
-                <td>lorem3</td>
-                <td>lorem4</td>
-                <td>lorem5</td>
-              </tr>
-              <tr>
-                <td>lorem1</td>
-                <td>lorem2</td>
-                <td>lorem3</td>
-                <td>lorem4</td>
-                <td>lorem5</td>
-              </tr>
-              <tr>
-                <td>lorem1</td>
-                <td>lorem2</td>
-                <td>lorem3</td>
-                <td>lorem4</td>
-                <td>lorem5</td>
-              </tr>
-            </tbody>
-          </table>
+      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]" id="tabla">
+        <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]">
+          <h2 class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold mb-6">Tabla</h2>
+          <div class="w-full overflow-x-auto">
+            <table class="min-w-[40rem] w-max max-w-none border-collapse text-left text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]">
+              <thead>
+                <tr class="bg-[var(--first-color)] text-white">
+                  <th class="whitespace-nowrap border border-[var(--first-color-alt)] px-4 py-3 font-semibold">Nombre</th>
+                  <th class="whitespace-nowrap border border-[var(--first-color-alt)] px-4 py-3 font-semibold">Rol</th>
+                  <th class="whitespace-nowrap border border-[var(--first-color-alt)] px-4 py-3 font-semibold">Estado</th>
+                  <th class="whitespace-nowrap border border-[var(--first-color-alt)] px-4 py-3 font-semibold">Fecha</th>
+                  <th class="whitespace-nowrap border border-[var(--first-color-alt)] px-4 py-3 font-semibold">Accion</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="bg-white even:bg-gray-50">
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">Ana Lopez</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">Design</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">Activo</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">2026-01-12</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3"><a class="text-[var(--first-color)] [@media(hover:hover)_and_(pointer:fine)]:hover:text-[var(--first-color-alt)]" href="#">Ver</a></td>
+                </tr>
+                <tr class="bg-white even:bg-gray-50">
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">Carlos Ruiz</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">Frontend</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">Pendiente</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">2026-02-03</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3"><a class="text-[var(--first-color)] [@media(hover:hover)_and_(pointer:fine)]:hover:text-[var(--first-color-alt)]" href="#">Ver</a></td>
+                </tr>
+                <tr class="bg-white even:bg-gray-50">
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">Maria Soto</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">Backend</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">Activo</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">2026-03-18</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3"><a class="text-[var(--first-color)] [@media(hover:hover)_and_(pointer:fine)]:hover:text-[var(--first-color-alt)]" href="#">Ver</a></td>
+                </tr>
+                <tr class="bg-white even:bg-gray-50">
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">Luis Perez</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">QA</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">Inactivo</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">2026-04-01</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3"><a class="text-[var(--first-color)] [@media(hover:hover)_and_(pointer:fine)]:hover:text-[var(--first-color-alt)]" href="#">Ver</a></td>
+                </tr>
+                <tr class="bg-white even:bg-gray-50">
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">Elena Diaz</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">Product</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">Activo</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3">2026-05-22</td>
+                  <td class="whitespace-nowrap border border-gray-200 px-4 py-3"><a class="text-[var(--first-color)] [@media(hover:hover)_and_(pointer:fine)]:hover:text-[var(--first-color-alt)]" href="#">Ver</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
-      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]"> 
-        <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]"> 
-          <p>
+      <section class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]" id="texto">
+        <div class="w-full max-w-[var(--container)] mx-auto border border-[tomato]">
+          <h2 class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold mb-6">Texto</h2>
+          <p class="mb-5 text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi,
             dolorem autem maiores quis dolor, reprehenderit delectus quia dolore,
             incidunt obcaecati sequi labore hic? Soluta doloremque vitae explicabo
-            assumenda fugit tenetur.
+            assumenda
+            <a href="#">fugit tenetur</a>.
           </p>
-          <p></p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi,
-          dolorem autem maiores quis dolor, reprehenderit delectus quia dolore,
-          incidunt obcaecati sequi labore hic? Soluta doloremque vitae explicabo
-          assumenda fugit tenetur.
+          <p class="mb-0 text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]">
+            Lorem ipsum dolor sit amet,
+            <a href="#">Example of Link</a> consectetur adipisicing elit.
+          </p>
         </div>
       </section>
     </main>
-    <footer class="w-full max-w-[var(--main-container)] mx-auto px-[15px] bg-[var(--base-color)] min-h-[var(--header-height)]">
+    <footer class="w-full max-w-[var(--main-container)] mx-auto px-[15px] bg-[var(--base-color)] min-h-[var(--footer-height)]">
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="index.js?t=1784220221602"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?t=1785788917044"></script>
+    <script src="index.js?t=1785788917044"></script>
   </body>
 </html>

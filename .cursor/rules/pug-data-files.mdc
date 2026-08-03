@@ -1,0 +1,39 @@
+---
+description: Los datos de cada módulo Pug viven inline en el mismo archivo; no existe src/pug/data/
+globs: src/pug/**/*.pug
+alwaysApply: false
+---
+
+# Datos inline en módulos Pug
+
+Este boilerplate es un storybook. No uses `src/pug/data/`.
+
+Cada módulo declara su propio objeto o array al inicio del archivo y lo consume con `each`.
+
+## Convención
+
+```pug
+-
+	const colorTableData = {
+		title: 'Paleta de colores',
+		items: [
+			{ name: 'Amarillo', hex: 'var(--first-color)' }
+		]
+	}
+
+section(class='w-full max-w-[var(--main-container)] mx-auto px-[15px]')
+	div(class='w-full max-w-[var(--container)] mx-auto')
+		each color in colorTableData.items
+			article
+				h3= color.name
+```
+
+Sliders: `{name}-slider.pug` → `{name}SliderData` (ver skill `create-slider-data`).
+
+## Reglas
+
+- Declara el objeto en `camelCase` en el mismo `.pug` del módulo o specimen.
+- No crees archivos `*-data.pug` ni la carpeta `src/pug/data/`.
+- No uses JSON externo para datos de plantillas.
+- Los módulos UI van en `src/pug/components/`.
+- Las páginas viven en `src/pug/pages/`.
