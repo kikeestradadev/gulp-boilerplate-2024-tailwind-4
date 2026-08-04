@@ -37,3 +37,4 @@ Sliders: `{name}-slider.pug` → `{name}SliderData` (ver skill `create-slider-da
 - No uses JSON externo para datos de plantillas.
 - Los módulos UI van en `src/pug/components/`.
 - Las páginas viven en `src/pug/pages/`.
+- `assetVersion` (cache-bust CSS/JS) lo inyecta Gulp desde `package.json`; no lo edites en el template (ver skill `bump-assets`).

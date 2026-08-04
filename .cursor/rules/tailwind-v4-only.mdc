@@ -10,7 +10,7 @@ Este boilerplate trabaja **exclusivamente con Tailwind CSS 4**. No uses APIs, pa
 ## Stack obligatorio
 
 - Paquete: `tailwindcss` ^4 + `@tailwindcss/postcss`
-- Entrada CSS: `src/scss/tailwind.css`
+- Entrada CSS: `src/styles/styles.css`
 - Pipeline: PostCSS vía Gulp (`@tailwindcss/postcss`)
 
 ## Correcto (v4)

@@ -1,16 +1,19 @@
-section(id='editor-css' class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]") 
-	div(class="w-full max-w-[var(--container)] mx-auto border border-[tomato] flex gap-2 flex-col")
-		pre(class="language-css" contenteditable="true" spellcheck="false")
-			style(contenteditable=true spellcheck="false" style="display: block; min-height: 100px;").
+section#editor-css.mx-auto.w-full.border(
+	,
+	class='max-w-[var(--main-container)] border-[steelblue] px-[15px]'
+) 
+	.mx-auto.flex.w-full.flex-col.gap-2.border(class='max-w-[var(--container)] border-[tomato]')
+		pre.language-css(contenteditable='true', spellcheck='false')
+			style(contenteditable, spellcheck='false', style='display: block; min-height: 100px').
 				.editor-css {
-					background-color: #000; 
-					color: aqua; 
-					font-size: 2rem; 
+					background-color: #000;
+					color: aqua;
+					font-size: 2rem;
 				}
-		div(class='editor-css')
-			h1(class="text-[length:var(--h1-size)] leading-[length:var(--h1-line)] font-bold") editor-css
+		.editor-css
+			h1.font-bold(class='text-[length:var(--h1-size)] leading-[length:var(--h1-line)]') editor-css
 style.
-	e[contenteditable="true"] {
+	e[contenteditable='true'] {
 		outline: none;
 		border-radius: 8px;
 		border: 2px solid #5cf;
@@ -22,11 +25,11 @@ style.
 		padding: 16px;
 		transition: box-shadow 0.2s;
 	}
-	pre[contenteditable="true"]:focus {
+	pre[contenteditable='true']:focus {
 		box-shadow: 0 0 0 2px #09f;
 	}
 script.
-	document.querySelectorAll('pre[contenteditable="true"] code').forEach(block => {
+	document.querySelectorAll('pre[contenteditable="true"] code').forEach((block) => {
 		block.addEventListener('input', () => {
 			Prism.highlightElement(block);
 		});

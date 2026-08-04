@@ -190,6 +190,21 @@ const getJsonData = () => {
 	return jsonData;
 };
 
+/** Cache-bust query for local CSS/JS; bumped by scripts/bump-assets.mjs on build. */
+const getAssetVersion = () => {
+	try {
+		const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+		return pkg.assetVersion || '1.0.0';
+	} catch {
+		return '1.0.0';
+	}
+};
+
+const pugLocals = () => ({
+	...getJsonData(),
+	assetVersion: getAssetVersion(),
+});
+
 const pagePathFromFile = (filePath) => {
 	const relative = path.relative('src/pug/pages', filePath).replace(/\\/g, '/');
 	if (!relative || relative.startsWith('..') || !relative.endsWith('.pug')) {
@@ -230,31 +245,6 @@ const mapHtml = (transformFn) =>
 		},
 	});
 
-// Cache-bust only in production. In dev it forced CSS/JS re-download on every
-// HTML rebuild and made multi-page workflows feel slow.
-const cacheBust = () => {
-	if (!isProd) {
-		return new Transform({
-			objectMode: true,
-			transform(file, _enc, cb) {
-				cb(null, file);
-			},
-		});
-	}
-
-	const stamp = Date.now();
-	return mapHtml((html) =>
-		html.replace(
-			/\b(href|src)=(["'])([^"']+\.(?:css|js))\2/gi,
-			(_match, attr, quote, url) => {
-				const clean = url.replace(/[?&]t=\d+/g, '');
-				const sep = clean.includes('?') ? '&' : '?';
-				return `${attr}=${quote}${clean}${sep}t=${stamp}${quote}`;
-			}
-		)
-	);
-};
-
 const htmlMinify = () =>
 	mapHtml((html) => {
 		if (!isProd) {
@@ -273,7 +263,7 @@ const compilePug = () => {
 	return gulp
 		.src(pugSources, { allowEmpty: true, base: './src/pug/pages' })
 		.pipe(plumber())
-		.pipe(data(() => getJsonData()))
+		.pipe(data(pugLocals))
 		.pipe(
 			pug({
 				pretty: !isProd,
@@ -281,7 +271,6 @@ const compilePug = () => {
 				doctype: 'html',
 			})
 		)
-		.pipe(cacheBust())
 		.pipe(htmlMinify())
 		.pipe(gulp.dest('public'));
 };
@@ -291,13 +280,23 @@ gulp.task('pug', () => {
 	return compilePug();
 });
 
-gulp.task('tailwind', async () => {
-	const inputPath = 'src/scss/tailwind.css';
-	const outputPath = 'public/tailwind.css';
+gulp.task('styles', async () => {
+	const inputPath = 'src/styles/styles.css';
+	const outputPath = 'public/styles.css';
 	const plugins = [tailwindcss, autoprefixer()];
 
 	if (isProd) {
-		plugins.push(cssnano({ preset: 'default' }));
+		// Strip every comment in public CSS (licenses included). Author notes live only in src/.
+		plugins.push(
+			cssnano({
+				preset: [
+					'default',
+					{
+						discardComments: { removeAll: true },
+					},
+				],
+			})
+		);
 	}
 
 	const css = fs.readFileSync(inputPath, 'utf8');
@@ -329,6 +328,8 @@ gulp.task('scripts', async () => {
 		format: 'iife',
 		target: ['es2018'],
 		minify: isProd,
+		// Dev keeps code readable; prod drops all comments (including /*! and // license banners).
+		legalComments: isProd ? 'none' : 'inline',
 		sourcemap: !isProd,
 		logLevel: 'silent',
 	});
@@ -354,7 +355,7 @@ gulp.task('clean-maps', (done) => {
 		return;
 	}
 
-	['public/index.js.map', 'public/tailwind.css.map'].forEach((file) => {
+	['public/index.js.map', 'public/styles.css.map'].forEach((file) => {
 		try {
 			fs.unlinkSync(file);
 		} catch {
@@ -366,40 +367,30 @@ gulp.task('clean-maps', (done) => {
 
 gulp.task(
 	'serve',
-	gulp.series('pug', 'tailwind', 'scripts', 'assets', (done) => {
+	gulp.series('pug', 'styles', 'scripts', 'assets', (done) => {
 		startDevServer();
 
 		const onPageChange = debounce((filePath) => {
 			const pagePath = pagePathFromFile(filePath);
 			pugSources = filePath;
-			gulp.series(
-				compilePug,
-				'tailwind',
-				reloadPage(pagePath)
-			)();
+			gulp.series(compilePug, 'styles', reloadPage(pagePath))();
 		}, 120);
 
 		const onSharedPugChange = debounce(() => {
 			pugSources = PAGES_GLOB;
-			gulp.series('pug', 'tailwind', reload)();
+			gulp.series('pug', 'styles', reload)();
 		}, 120);
 
 		gulp.watch('src/pug/pages/**/*.pug').on('change', onPageChange);
+		gulp.watch(['src/pug/components/**/*.pug', 'src/pug/config/**/*.pug'], onSharedPugChange);
 		gulp.watch(
-			['src/pug/components/**/*.pug', 'src/pug/config/**/*.pug'],
-			onSharedPugChange
+			['src/styles/styles.css', 'tailwind.config.js'],
+			debounce(gulp.series('styles', reloadCss), 120)
 		);
-		gulp.watch(
-			['src/scss/tailwind.css', 'tailwind.config.js'],
-			debounce(gulp.series('tailwind', reloadCss), 120)
-		);
-		gulp.watch(
-			'src/js/**/*.js',
-			debounce(gulp.series('scripts', reload), 120)
-		);
+		gulp.watch('src/js/**/*.js', debounce(gulp.series('scripts', reload), 120));
 		gulp.watch(
 			['src/data/**/*.json', 'src/md/**/*.md'],
-			debounce(gulp.series('pug', 'tailwind', reload), 120)
+			debounce(gulp.series('pug', 'styles', reload), 120)
 		);
 		gulp.watch(
 			['src/assets/**/*', 'src/images/**/*'],
@@ -411,5 +402,5 @@ gulp.task(
 );
 
 gulp.task('dev', gulp.series('serve'));
-gulp.task('build', gulp.series('pug', 'tailwind', 'scripts', 'assets', 'clean-maps'));
+gulp.task('build', gulp.series('pug', 'styles', 'scripts', 'assets', 'clean-maps'));
 gulp.task('default', gulp.series('dev'));

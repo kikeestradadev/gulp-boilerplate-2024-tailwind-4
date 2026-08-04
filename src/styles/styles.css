@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @source "../pug/**/*.pug";
 @source "../js/**/*.js";
@@ -13,7 +13,7 @@
 	--breakpoint-lg: 1300px;
 	--breakpoint-xl: 1600px;
 	--breakpoint-xxl: 1900px;
-	--font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+	--font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {

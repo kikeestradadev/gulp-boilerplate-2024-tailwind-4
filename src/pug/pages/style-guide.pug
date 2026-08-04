@@ -1,10 +1,10 @@
 extends ../config/template
 
-append config
-	-currentPage		= "style-guide"
-	-siteName			= 'Style Guide'
-	-content			= 'content'
-	-pageDescription	= 'Style Guide de MyBoilerplate'
+block append config
+	- currentPage = 'style-guide';
+	- siteName = 'Style Guide';
+	- content = 'content';
+	- pageDescription = 'Style Guide de MyBoilerplate';
 
 block main-header
 block main-container

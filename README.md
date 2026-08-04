@@ -16,19 +16,19 @@ Scaffolding for static sites with Gulp 5, Pug, and Tailwind CSS 4.
 
 ## Scripts
 
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Dev server on port 3000 with live reload |
-| `npm run build` | Production build (`NODE_ENV=production`) |
+| Command          | Description                               |
+| ---------------- | ----------------------------------------- |
+| `npm run dev`    | Dev server on port 3000 with live reload  |
+| `npm run build`  | Bumps `assetVersion`, then production build |
 | `npm run deploy` | Build + publish `public/` to GitHub Pages |
-| `npm run format` | Format with Prettier |
+| `npm run format` | Format with Prettier                      |
 
 ## Project layout
 
 ```
 src/
   pug/       templates & components
-  scss/      tailwind.css entry
+  styles/    styles.css entry (Tailwind 4)
   js/        entry + modules/
   data/      JSON injected into Pug
   assets/    static files → public/assets
@@ -41,6 +41,7 @@ public/      build output
 
 - Swiper is loaded from jsDelivr CDN in the layout template (not an npm dependency).
 - Production builds minify HTML/CSS/JS and omit sourcemaps.
+- Local CSS/JS use `?v=${assetVersion}` (bumping via `scripts/bump-assets.mjs` on `npm run build`).
 - JS is bundled with esbuild (`scripts` task ~10 ms).
 - `npm audit` should report 0 vulnerabilities (overrides pin `markdown-it` / `linkify-it`).
 - Dev server is built-in (no BrowserSync): http://localhost:3000 with live reload.

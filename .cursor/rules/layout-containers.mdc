@@ -6,7 +6,7 @@ alwaysApply: false
 
 # Contenedores de modulo
 
-Cada modulo se crea con una etiqueta `section` y dos capas de layout. Los anchos viven en `:root` (`src/scss/tailwind.css`) y **nunca** se hardcodean como `3500px` o `1600px`.
+Cada modulo se crea con una etiqueta `section` y dos capas de layout. Los anchos viven en `:root` (`src/styles/styles.css`) y **nunca** se hardcodean como `3500px` o `1600px`.
 
 | Capa | Variable | Valor | Rol |
 |------|----------|-------|-----|

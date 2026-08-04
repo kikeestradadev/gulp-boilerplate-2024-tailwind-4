@@ -99,10 +99,10 @@
 			"description": "Win up $90,000 with just $1. Every single day."
 		}
 	],
-	"perksSlider": [ 
+	"perksSlider": [
 		{
 			"id": "perk1",
-			"url": "https://signup.betanysports.eu", 
+			"url": "https://signup.betanysports.eu",
 			"img": "https://images.betanysports.eu/wp-content/uploads/dollar.png",
 			"title": "cash rebate"
 		},

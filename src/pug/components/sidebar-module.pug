@@ -1,6 +1,6 @@
-section(id='sidebar' class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]") 
-	div(class="w-full max-w-[var(--container)] mx-auto border border-[tomato]") 
-		h2(class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold") side bar
-		div(class='flex flex-col lg:flex-row')
-			div(class='order-2 lg:order-1 w-full lg:w-[400px] bg-gray-300 h-32') first Div
-			div(class='order-1 lg:order-2 w-full lg:flex-1 bg-gray-200 h-32') Second Div
+section#sidebar.mx-auto.w-full.border(, class='max-w-[var(--main-container)] border-[steelblue] px-[15px]') 
+	.mx-auto.w-full.border(class='max-w-[var(--container)] border-[tomato]') 
+		h2.font-bold(class='text-[length:var(--h2-size)] leading-[length:var(--h2-line)]') side bar
+		.flex.flex-col(class='lg:flex-row')
+			.order-2.h-32.w-full.bg-gray-300(class='lg:order-1 lg:w-[400px]') first Div
+			.order-1.h-32.w-full.bg-gray-200(class='lg:order-2 lg:flex-1') Second Div

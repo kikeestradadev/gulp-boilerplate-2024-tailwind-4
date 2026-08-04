@@ -43,34 +43,38 @@
 		],
 	}
 
-section(id='botones' class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]")
-	div(class="w-full max-w-[var(--container)] mx-auto")
-		h2(class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold mb-3")= buttonsModuleData.title
-		p(class="mb-8 text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]")= buttonsModuleData.lead
+section#botones.mx-auto.w-full.border(, class='max-w-[var(--main-container)] border-[steelblue] px-[15px]')
+	.mx-auto.w-full(class='max-w-[var(--container)]')
+		h2.mb-3.font-bold(class='text-[length:var(--h2-size)] leading-[length:var(--h2-line)]')= buttonsModuleData.title
+		p.mb-8(class='text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]')= buttonsModuleData.lead
 
-		h3(class="text-[length:var(--h3-size)] leading-[length:var(--h3-line)] font-semibold mb-4") Variantes
-		div(class="mb-10 flex flex-wrap gap-6")
+		h3.mb-4.font-semibold(class='text-[length:var(--h3-size)] leading-[length:var(--h3-line)]') Variantes
+		.mb-10.flex.flex-wrap.gap-6
 			each variant in buttonsModuleData.variants
-				div(class="flex min-w-[10rem] flex-col gap-3")
-					p(class="m-0 text-sm font-semibold text-[var(--paragraph-color)]")= variant.name
-					a(class=variant.className href="#")= buttonsModuleData.label
-					p(class="m-0 flex items-center gap-2 text-xs text-gray-500")
-						span(class="inline-block size-3 rounded-sm border border-black/10" style=`background-color: ${variant.hex}`)
-						| #{variant.hex}
+				.flex.flex-col.gap-3(class='min-w-[10rem]')
+					p.m-0.text-sm.font-semibold(class='text-[var(--paragraph-color)]')= variant.name
+					a(class=variant.className, href='#')= buttonsModuleData.label
+					p.m-0.flex.items-center.gap-2.text-xs.text-gray-500
+						span.inline-block.size-3.rounded-sm.border(
+							class='border-black/10',
+							style=`background-color: ${variant.hex}`
+						)
+						| #{ variant.hex }
 
-		h3(class="text-[length:var(--h3-size)] leading-[length:var(--h3-line)] font-semibold mb-4") Tamanos
-		div(class="mb-10 flex flex-wrap items-end gap-6")
+		h3.mb-4.font-semibold(class='text-[length:var(--h3-size)] leading-[length:var(--h3-line)]') Tamanos
+		.mb-10.flex.flex-wrap.items-end.gap-6
 			each size in buttonsModuleData.sizes
-				div(class="flex flex-col gap-3")
-					p(class="m-0 text-sm font-semibold text-[var(--paragraph-color)]")= size.name
-					a(class=size.className href="#")= buttonsModuleData.label
-					p(class="m-0 text-xs text-gray-500")= size.note
+				.flex.flex-col.gap-3
+					p.m-0.text-sm.font-semibold(class='text-[var(--paragraph-color)]')= size.name
+					a(class=size.className, href='#')= buttonsModuleData.label
+					p.m-0.text-xs.text-gray-500= size.note
 
-		h3(class="text-[length:var(--h3-size)] leading-[length:var(--h3-line)] font-semibold mb-4") Enlaces
-		p(class="mb-4 text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]")
+		h3.mb-4.font-semibold(class='text-[length:var(--h3-size)] leading-[length:var(--h3-line)]') Enlaces
+		p.mb-4(class='text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]')
 			a(href=buttonsModuleData.link.href)= buttonsModuleData.link.label
-		p(class="mb-0 text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]")
+		p.mb-0(class='text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]')
 			| Lorem ipsum dolor sit amet,
 			|
 			a(href=buttonsModuleData.link.href)= buttonsModuleData.link.label
-			|  consectetur adipisicing elit.
+			|
+			| consectetur adipisicing elit.

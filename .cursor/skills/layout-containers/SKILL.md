@@ -1,16 +1,16 @@
 ---
 name: layout-containers
 description: >-
-  Enforce module shell: section with Main Container (--main-container) then
-  Container (--container). Outer uses w-full, max-w-[var(--main-container)],
-  mx-auto, px-[15px] only. Inner has no side padding. Vertical rhythm comes from
-  main gap-[var(--section-gap)] — never py/pt/pb on section shells. Use when
-  creating or editing Pug/HTML modules, sections, or storybook components.
+    Enforce module shell: section with Main Container (--main-container) then
+    Container (--container). Outer uses w-full, max-w-[var(--main-container)],
+    mx-auto, px-[15px] only. Inner has no side padding. Vertical rhythm comes from
+    main gap-[var(--section-gap)] — never py/pt/pb on section shells. Use when
+    creating or editing Pug/HTML modules, sections, or storybook components.
 ---
 
 # Layout Containers
 
-## Tokens (`src/scss/tailwind.css` `:root`)
+## Tokens (`src/styles/styles.css` `:root`)
 
 - `--main-container: 3500px` — outer `section`
 - `--container: 1600px` — inner content wrapper
@@ -19,14 +19,14 @@ description: >-
 ## Module shell (required)
 
 ```pug
-section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px]")
-	div(class="w-full max-w-[var(--container)] mx-auto")
+section.mx-auto.w-full(class='max-w-[var(--main-container)] px-[15px]')
+	.mx-auto.w-full(class='max-w-[var(--container)]')
 		//- module content
 ```
 
-| Layer | Classes |
-|-------|---------|
-| `section` | `w-full max-w-[var(--main-container)] mx-auto px-[15px]` |
+| Layer       | Classes                                                    |
+| ----------- | ---------------------------------------------------------- |
+| `section`   | `w-full max-w-[var(--main-container)] mx-auto px-[15px]`   |
 | inner `div` | `w-full max-w-[var(--container)] mx-auto` (no `px-[15px]`) |
 
 ## Vertical spacing
@@ -34,7 +34,7 @@ section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px]")
 `main` owns the gap:
 
 ```pug
-main(class="flex-1 flex flex-col gap-[var(--section-gap)]")
+main.flex.flex-1.flex-col(class='gap-[var(--section-gap)]')
 ```
 
 Do **not** add `py-*`, `pt-*`, or `pb-*` on module `section` shells.

@@ -1,37 +1,41 @@
-section(id='tipografia' class="w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]")
-	div(class="w-full max-w-[var(--container)] mx-auto")
-		hr(class="border-0 border-t-2 border-[var(--storybook-divider)] mb-8")
-		h1(class="text-[length:var(--h1-size)] leading-[length:var(--h1-line)] font-bold") h1
-		h2(class="text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold") h2
-		h3(class="text-[length:var(--h3-size)] leading-[length:var(--h3-line)] font-semibold") h3
-		h4(class="text-[length:var(--h4-size)] leading-[length:var(--h4-line)] font-semibold") h4
-		h5(class="text-[length:var(--h5-size)] leading-[length:var(--h5-line)] font-semibold") h5
-		h6(class="text-[length:var(--h6-size)] leading-[length:var(--h6-line)] font-semibold") h6
-		ul(class="my-6 list-disc pl-10")
-			li(class="text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]") Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
-			li(class="text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]") Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
-		ol(class="my-6 list-decimal pl-10")
-			li(class="text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]") Primer punto tipografico de ejemplo.
-			li(class="text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]") Segundo punto tipografico de ejemplo.
-		hr(class="border-0 border-t-2 border-[var(--storybook-divider)] my-8")
-		p(class="text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)] mb-5")
+section#tipografia.mx-auto.w-full.border(
+	,
+	class='max-w-[var(--main-container)] border-[steelblue] px-[15px]'
+)
+	.mx-auto.w-full(class='max-w-[var(--container)]')
+		hr.mb-8.border-0.border-t-2(class='border-[var(--storybook-divider)]')
+		h1.font-bold(class='text-[length:var(--h1-size)] leading-[length:var(--h1-line)]') h1
+		h2.font-bold(class='text-[length:var(--h2-size)] leading-[length:var(--h2-line)]') h2
+		h3.font-semibold(class='text-[length:var(--h3-size)] leading-[length:var(--h3-line)]') h3
+		h4.font-semibold(class='text-[length:var(--h4-size)] leading-[length:var(--h4-line)]') h4
+		h5.font-semibold(class='text-[length:var(--h5-size)] leading-[length:var(--h5-line)]') h5
+		h6.font-semibold(class='text-[length:var(--h6-size)] leading-[length:var(--h6-line)]') h6
+		ul.my-6.list-disc.pl-10
+			li(class='text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]') Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+			li(class='text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]') Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+		ol.my-6.list-decimal.pl-10
+			li(class='text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]') Primer punto tipografico de ejemplo.
+			li(class='text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]') Segundo punto tipografico de ejemplo.
+		hr.my-8.border-0.border-t-2(class='border-[var(--storybook-divider)]')
+		p.mb-5(class='text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]')
 			| Texto con
 			|
 			strong negrita
 			| ,
 			|
 			em cursiva
-			|  y un
 			|
-			a(href="#") Enlace de ejemplo
+			| y un
+			|
+			a(href='#') Enlace de ejemplo
 			| .
-		p(class="text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)] mb-5")
+		p.mb-5(class='text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]')
 			| Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi,
 			| dolorem autem maiores quis dolor, reprehenderit delectus quia dolore,
 			| incidunt obcaecati sequi labore hic? Soluta doloremque vitae explicabo
 			| assumenda
 			|
-			a(href="#") fugit tenetur
+			a(href='#') fugit tenetur
 			| .
-		p(class="text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)] mb-0")
-			a(href="#") Example of Link
+		p.mb-0(class='text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]')
+			a(href='#') Example of Link

@@ -1,8 +1,8 @@
 ---
 name: create-slider-data
 description: >-
-  Crea y modifica sliders Pug + módulo JS Swiper. Usar al crear, editar o
-  refactorizar componentes cuyo nombre termine en -slider.pug o *Slider.js.
+    Crea y modifica sliders Pug + módulo JS Swiper. Usar al crear, editar o
+    refactorizar componentes cuyo nombre termine en -slider.pug o *Slider.js.
 ---
 
 # Sliders Pug + Swiper
@@ -13,13 +13,13 @@ Swiper se carga por CDN en `src/pug/config/template.pug` (CSS + JS). No lo añad
 
 ## Naming (obligatorio)
 
-| Pieza | Convención | Ejemplo |
-|-------|------------|---------|
-| Pug | `{name}-slider.pug` | `src/pug/components/allies-slider.pug` |
-| Datos inline | `{name}SliderData` | `alliesSliderData` |
-| Raíz / bloque | `.{name}-slider` | `.allies-slider` |
-| JS | `{name}Slider.js` | `src/js/modules/alliesSlider.js` |
-| Const JS | `{name}Slider` | `const alliesSlider` |
+| Pieza         | Convención          | Ejemplo                                |
+| ------------- | ------------------- | -------------------------------------- |
+| Pug           | `{name}-slider.pug` | `src/pug/components/allies-slider.pug` |
+| Datos inline  | `{name}SliderData`  | `alliesSliderData`                     |
+| Raíz / bloque | `.{name}-slider`    | `.allies-slider`                       |
+| JS            | `{name}Slider.js`   | `src/js/modules/alliesSlider.js`       |
+| Const JS      | `{name}Slider`      | `const alliesSlider`                   |
 
 ## Markup Pug
 
@@ -34,17 +34,17 @@ Declara el contenido al inicio del mismo archivo y recórrelo con `each`. Usa sh
 		]
 	}
 
-section(class='allies-slider w-full max-w-[var(--main-container)] mx-auto px-[15px]')
-	div(class='w-full max-w-[var(--container)] mx-auto')
-		h2(class='text-[length:var(--h2-size)] font-bold mb-6')= alliesSliderData.title
-		div(class='swiper')
-			div(class='swiper-wrapper')
+section.allies-slider.mx-auto.w-full(class='max-w-[var(--main-container)] px-[15px]')
+	.mx-auto.w-full(class='max-w-[var(--container)]')
+		h2.mb-6.font-bold(class='text-[length:var(--h2-size)]')= alliesSliderData.title
+		.swiper
+			.swiper-wrapper
 				each ally in alliesSliderData.items
-					article(class='swiper-slide')
-						img(src=ally.image alt=ally.name)
-			div(class='swiper-pagination')
-			div(class='swiper-button-prev')
-			div(class='swiper-button-next')
+					article.swiper-slide
+						img(src=ally.image, alt=ally.name)
+			.swiper-pagination
+			.swiper-button-prev
+			.swiper-button-next
 ```
 
 ## Módulo JS

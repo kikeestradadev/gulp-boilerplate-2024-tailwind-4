@@ -6,7 +6,7 @@ alwaysApply: false
 
 # Variables CSS de `:root` en Tailwind
 
-Las custom properties definidas en `:root` (`src/scss/tailwind.css`) se reutilizan en markup **solo** con la sintaxis de valor arbitrario de Tailwind:
+Las custom properties definidas en `:root` (`src/styles/styles.css`) se reutilizan en markup **solo** con la sintaxis de valor arbitrario de Tailwind:
 
 ```
 propiedad-[var(--nombre-variable)]

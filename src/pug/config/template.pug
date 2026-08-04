@@ -1,41 +1,53 @@
 block config
-	-let currentPage 		= 'home'
-	-let content 			= 'My Page'
-	-let siteName 			= 'GulpBoilerplate'
-	-let pageDescription 	= 'Here is the description Page.'
+	- let currentPage = 'home';
+	- let content = 'My Page';
+	- let siteName = 'GulpBoilerplate';
+	- let pageDescription = 'Here is the description Page.';
 doctype html
-html(lang='en' prefix='og: http://ogp.me/ns#', class='no-js') 
+html.no-js(lang='en', prefix='og: http://ogp.me/ns#') 
 	head
-		meta(charset="utf-8")
-		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
 		meta(name='format-detection', content='telephone=no')
-		meta(name="theme-color", content="#0096D9")
-		link(rel="icon", href="./assets/sprite.svg", type="image/svg+xml")
-		meta(name="description", content="Breve descripción del sitio web que ayuda en el SEO.")
-		meta(http-equiv="Content-Security-Policy", content="upgrade-insecure-requests")
-		meta(http-equiv="Cache-Control", content="no-cache, no-store, must-revalidate")
-		meta(http-equiv="Expires", content="0")
-		meta(http-equiv="Pragma", content="no-cache") 
-		link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css")
-		link(rel="preconnect" href="https://fonts.googleapis.com")
-		link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
-		link(href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet")
-		link(rel="stylesheet" href="./assets/prism.css")
-		link(rel="stylesheet" href="tailwind.css")
-		title= currentPage.slice(0,1).toUpperCase() + currentPage.slice(1) + " | " + siteName
-	body(class=`${currentPage} bg-[var(--bg-body)] flex flex-col items-center min-h-screen pt-[var(--header-height)]`, itemscope itemtype="http://schema.org/WebPage" )
+		meta(name='theme-color', content='#0096D9')
+		link(rel='icon', href='./assets/sprite.svg', type='image/svg+xml')
+		meta(name='description', content='Breve descripción del sitio web que ayuda en el SEO.')
+		meta(http-equiv='Content-Security-Policy', content='upgrade-insecure-requests')
+		meta(http-equiv='Cache-Control', content='no-cache, no-store, must-revalidate')
+		meta(http-equiv='Expires', content='0')
+		meta(http-equiv='Pragma', content='no-cache') 
+		link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css')
+		link(rel='preconnect', href='https://fonts.googleapis.com')
+		link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin)
+		link(
+			href='https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap',
+			rel='stylesheet'
+		)
+		link(rel='stylesheet', href=`./assets/prism.css?v=${assetVersion}`)
+		link(rel='stylesheet', href=`styles.css?v=${assetVersion}`)
+		title= currentPage.slice(0, 1).toUpperCase() + currentPage.slice(1) + ' | ' + siteName
+	body(
+		class=`${currentPage} flex min-h-screen flex-col items-center bg-[var(--bg-body)] pt-[var(--header-height)]`,
+		itemscope,
+		itemtype='http://schema.org/WebPage'
+	)
 		//- here start the Main Header
-		header(class='fixed top-0 left-0 right-0 z-10 w-full max-w-[var(--main-container)] mx-auto px-[15px] bg-[var(--base-color)] min-h-[var(--header-height)]')
+		header.fixed.top-0.right-0.left-0.z-10.mx-auto.w-full(
+			class='min-h-[var(--header-height)] max-w-[var(--main-container)] bg-[var(--base-color)] px-[15px]'
+		)
 			block main-header
 		//- here ends the Main Header
 		//- here start the Main Container
-		main(class='flex-1 w-full max-w-[var(--main-container)] flex flex-col gap-[var(--section-gap)]')
+		main.flex.w-full.flex-1.flex-col(class='max-w-[var(--main-container)] gap-[var(--section-gap)]')
 			block main-container
 		//- here ends the Main Container
 		//- here start the Main Footer 
-		footer(class='w-full max-w-[var(--main-container)] mx-auto px-[15px] bg-[var(--base-color)] min-h-[var(--footer-height)]')
+		footer.mx-auto.w-full(
+			class='min-h-[var(--footer-height)] max-w-[var(--main-container)] bg-[var(--base-color)] px-[15px]'
+		)
 			block main-footer
 		//- here ends the Main Footer
-		script(src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js")
-		script(src="index.js")
+		include ../components/floating-button
+		script(src='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js')
+		script(src=`index.js?v=${assetVersion}`)
 		block scripts

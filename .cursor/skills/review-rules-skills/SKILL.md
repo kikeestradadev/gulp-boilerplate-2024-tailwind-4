@@ -1,9 +1,9 @@
 ---
 name: review-rules-skills
 description: >-
-  Obligatorio al inicio de cualquier tarea en este repo: leer rules y skills
-  relevantes de .cursor antes de editar Pug, CSS, JS, sliders o layout. Usar
-  siempre antes de implementar, refactorizar o crear archivos.
+    Obligatorio al inicio de cualquier tarea en este repo: leer rules y skills
+    relevantes de .cursor antes de editar Pug, CSS, JS, sliders o layout. Usar
+    siempre antes de implementar, refactorizar o crear archivos.
 ---
 
 # Revisar rules y skills primero
@@ -15,21 +15,21 @@ No implementes “de memoria”. Omisiones típicas: sintaxis Pug corta, shells 
 ## Checklist (obligatorio)
 
 1. Lista lo que hay ahora:
-   - Rules: `.cursor/rules/*.mdc`
-   - Skills: `.cursor/skills/*/SKILL.md`
+    - Rules: `.cursor/rules/*.mdc`
+    - Skills: `.cursor/skills/*/SKILL.md`
 2. Según la tarea, **lee con Read** (no asumas el contenido) los que apliquen.
 3. Solo después implementa, respetando lo leído.
 
 ## Mapa rápido
 
-| Si tocas… | Lee primero |
-|-----------|-------------|
-| Cualquier CSS / Tailwind | `tailwind-v4-only` (rule + skill) |
-| Variables `:root` / tipografía / colores en markup | `css-root-variables` |
-| Layout / sections / modules Pug | `layout-containers` (rule + skill) |
-| Plantillas Pug | `pug-long-syntax` (rule + skill), `pug-data-files` |
-| Sliders / Swiper | `create-slider-data` + `javascript-modules` |
-| JS en `src/js` | `javascript-modules` |
+| Si tocas…                                          | Lee primero                                        |
+| -------------------------------------------------- | -------------------------------------------------- |
+| Cualquier CSS / Tailwind                           | `tailwind-v4-only` (rule + skill)                  |
+| Variables `:root` / tipografía / colores en markup | `css-root-variables`                               |
+| Layout / sections / modules Pug                    | `layout-containers` (rule + skill)                 |
+| Plantillas Pug                                     | `pug-long-syntax` (rule + skill), `pug-data-files` |
+| Sliders / Swiper                                   | `create-slider-data` + `javascript-modules`        |
+| JS en `src/js`                                     | `javascript-modules`                               |
 
 Si la tarea cruza varias capas (p. ej. un slider nuevo), lee **todos** los items del mapa que apliquen antes del primer edit.
 
