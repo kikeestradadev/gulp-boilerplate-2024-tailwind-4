@@ -1,11 +1,11 @@
 {
 	"name": "gulp-boilerplate-2024",
 	"version": "1.0.0",
-	"assetVersion": "1.0.4",
+	"assetVersion": "1.0.5",
 	"description": "Simple scaffolding for static web projects with Gulp + Tailwind CSS 4",
 	"type": "module",
 	"main": "gulpfile.js",
-	"homepage": "https://kikeestrada.github.io/gulp-boilerplate-2024/",
+	"homepage": "https://kikeestradadev.github.io/gulp-boilerplate-2024-tailwind-4/",
 	"engines": {
 		"node": ">=22.13.1"
 	},
