@@ -30,8 +30,8 @@ Gulp inyecta `assetVersion` a Pug vía `gulp-data` (lee `package.json`). No lo h
 
 ## Reglas
 
-1. No hardcodees `?v=1.0.0` en markup; usa `assetVersion`.
-2. No edites `assetVersion` a mano salvo hotfix; usa `npm run build`.
-3. `assetVersion` es independiente de `version` del paquete npm.
-4. No añadas `?v=` a recursos CDN (Swiper, fuentes).
-5. No uses `src/pug/data/` para este valor.
+- No hardcodees `?v=1.0.0` en markup; usa `assetVersion`.
+- No edites `assetVersion` a mano salvo hotfix; usa `npm run build`.
+- `assetVersion` es independiente de `version` del paquete npm.
+- No añadas `?v=` a recursos CDN (Swiper, fuentes).
+- No pongas `assetVersion` en JSON de `src/data/`.

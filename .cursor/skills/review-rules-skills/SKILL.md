@@ -28,6 +28,7 @@ No implementes “de memoria”. Omisiones típicas: sintaxis Pug corta, shells 
 | Variables `:root` / tipografía / colores en markup | `css-root-variables`                               |
 | Layout / sections / modules Pug                    | `layout-containers` (rule + skill)                 |
 | Plantillas Pug                                     | `pug-long-syntax` (rule + skill), `pug-data-files` |
+| Datos de componentes / sliders                     | `pug-data-files`, skill `create-slider-data`       |
 | Sliders / Swiper                                   | `create-slider-data` + `javascript-modules`        |
 | JS en `src/js`                                     | `javascript-modules`                               |
 

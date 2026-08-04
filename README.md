@@ -32,7 +32,7 @@ src/
   pug/       templates & components
   styles/    styles.css entry (Tailwind 4)
   js/        entry + modules/
-  data/      JSON injected into Pug
+  data/      JSON for Pug (`{name}-data.json` → camelCase locals)
   assets/    static files → public/assets
   images/    images → public/images
   md/        markdown includes

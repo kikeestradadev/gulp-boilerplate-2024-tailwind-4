@@ -178,13 +178,27 @@ const startDevServer = () => {
 const getJsonData = () => {
 	const dataDir = './src/data/';
 	const files = fs.readdirSync(dataDir);
-	let jsonData = {};
+	const jsonData = {};
+
+	const kebabToCamel = (value) =>
+		value.replace(/-([a-z0-9])/g, (_, char) => char.toUpperCase());
 
 	files.forEach((file) => {
-		if (path.extname(file) === '.json') {
-			const fileData = fs.readFileSync(path.join(dataDir, file));
-			Object.assign(jsonData, JSON.parse(fileData));
+		if (path.extname(file) !== '.json') {
+			return;
 		}
+
+		const parsed = JSON.parse(fs.readFileSync(path.join(dataDir, file), 'utf8'));
+		const base = path.basename(file, '.json');
+
+		// main-slider-data.json → local mainSliderData (object root of the file)
+		if (base.endsWith('-data')) {
+			jsonData[kebabToCamel(base)] = parsed;
+			return;
+		}
+
+		// Legacy multi-key files (example.json, slider.json, …)
+		Object.assign(jsonData, parsed);
 	});
 
 	return jsonData;
