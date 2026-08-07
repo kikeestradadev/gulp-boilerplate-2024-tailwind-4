@@ -1,5 +1,5 @@
 ---
-description: Cada modulo Pug usa section + Main Container y Container; el espacio vertical entre sections lo da --section-gap en main (sin py/pt/pb en sections)
+description: Cada modulo Pug usa section + Main Container y Container; main usa gap y py con --section-gap (sin py/pt/pb en sections)
 globs: "**/*.{pug,html}"
 alwaysApply: false
 ---
@@ -12,7 +12,7 @@ Cada modulo se crea con una etiqueta `section` y dos capas de layout. Los anchos
 |------|----------|-------|-----|
 | Outer (`section`) | `--main-container` | `3500px` | Ancho maximo de seccion |
 | Inner (`div`) | `--container` | `1600px` | Contenido interno |
-| Espacio entre sections | `--section-gap` | `2.5rem` / `4rem` | Gap simetrico en `main` |
+| Ritmo vertical | `--section-gap` | `2.5rem` / `4rem` | `gap` y `py` en `main` |
 
 ## Shell obligatorio
 
@@ -27,15 +27,20 @@ section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px]")
 | `section` (main-container) | `w-full` | `max-w-[var(--main-container)]` | `mx-auto` | `px-[15px]` solo lateral |
 | inner `div` (container) | `w-full` | `max-w-[var(--container)]` | `mx-auto` | **sin** padding |
 
-## Espaciado vertical (gap, no padding)
+## Espaciado vertical (solo en `main`)
 
-El `main` del layout aplica el gap:
+El `main` del layout aplica:
 
 ```pug
-main(class="flex-1 flex flex-col gap-[var(--section-gap)]")
+main(
+	class="flex-1 flex flex-col max-w-[var(--main-container)] gap-[var(--section-gap)] py-[var(--section-gap)]"
+)
 ```
 
-Las `section` **no** llevan `py-*`, `pt-*` ni `pb-*`. La distancia entre modulos es simetrica y se controla solo con `--section-gap` en `:root`.
+- `gap-[var(--section-gap)]` — espacio **entre** sections
+- `py-[var(--section-gap)]` — espacio **arriba del primero** y **abajo del último** (no van pegados al borde de `main`)
+
+Las `section` **no** llevan `py-*`, `pt-*` ni `pb-*`. Controla todo con `--section-gap` en `:root`.
 
 ## Incorrecto
 
@@ -43,6 +48,8 @@ Las `section` **no** llevan `py-*`, `pt-*` ni `pb-*`. La distancia entre modulos
 section(class="w-full max-w-[var(--main-container)] mx-auto px-[15px] py-10")
 section(class="w-full max-w-[3500px] mx-auto px-[15px]")
 	div(class="w-full max-w-[var(--container)] mx-auto px-[15px]")
+main(class="flex-1 flex flex-col gap-[var(--section-gap)]")
+//- falta py: el primer y ultimo modulo quedan pegados
 ```
 
 ## Reglas
@@ -50,6 +57,7 @@ section(class="w-full max-w-[3500px] mx-auto px-[15px]")
 1. La raiz del modulo es siempre `section`.
 2. Outer → `w-full max-w-[var(--main-container)] mx-auto px-[15px]`.
 3. Inner → `w-full max-w-[var(--container)] mx-auto` (**sin** `px-[15px]`).
-4. No uses `py-*` / `pt-*` / `pb-*` en el shell `section`; el espacio lo da `gap-[var(--section-gap)]` en `main`.
-5. Para cambiar anchos o el gap, edita las variables en `:root`, no el markup.
-6. Header/footer del layout pueden usar solo el shell Main Container; los modulos de contenido usan las dos capas.
+4. No uses `py-*` / `pt-*` / `pb-*` en el shell `section`.
+5. `main` **debe** llevar `gap-[var(--section-gap)]` y `py-[var(--section-gap)]`.
+6. Para cambiar anchos o el ritmo vertical, edita las variables en `:root`, no el markup.
+7. Header/footer del layout pueden usar solo el shell Main Container; los modulos de contenido usan las dos capas.

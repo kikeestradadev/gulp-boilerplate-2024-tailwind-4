@@ -10,7 +10,7 @@ description: >-
 
 Antes de escribir o cambiar código en este proyecto, **para y revisa** las reglas del juego en `.cursor/`.
 
-No implementes “de memoria”. Omisiones típicas: sintaxis Pug corta, shells sin `--main-container`/`--container`, tipografía sin tokens `:root`, módulos JS sin camelCase/`initComponents`, sliders sin convención Swiper.
+No implementes “de memoria”. Omisiones tipicas: sintaxis Pug corta, shells sin `--main-container`/`--container`, `main` sin `gap`+`py` de `--section-gap`, tipografia sin tokens `:root`, modulos JS sin camelCase/`initComponents`, sliders sin convencion Swiper.
 
 ## Checklist (obligatorio)
 

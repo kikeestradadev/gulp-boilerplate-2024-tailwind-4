@@ -38,7 +38,9 @@ html(lang='en', prefix='og: http://ogp.me/ns#', class='no-js')
 			block main-header
 		//- here ends the Main Header
 		//- here start the Main Container
-		main(class='flex w-full flex-1 flex-col max-w-[var(--main-container)] gap-[var(--section-gap)]')
+		main(
+			class='flex w-full flex-1 flex-col max-w-[var(--main-container)] gap-[var(--section-gap)] py-[var(--section-gap)]'
+		)
 			block main-container
 		//- here ends the Main Container
 		//- here start the Main Footer
