@@ -1,0 +1,75 @@
+section(
+	id='persona-grid'
+	class='persona-grid w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]'
+	data-url=personaGridData.dataUrl
+	data-storage-key=personaGridData.storageKey
+	data-error-message=personaGridData.errorMessage
+	data-empty-list=personaGridData.emptyList
+	data-loading-message=personaGridData.loadingMessage
+	data-created-message=personaGridData.createdMessage
+	data-updated-message=personaGridData.updatedMessage
+	data-deleted-message=personaGridData.deletedMessage
+	data-count-label=personaGridData.countLabel
+	data-form-title-create=personaGridData.formTitleCreate
+	data-form-title-edit=personaGridData.formTitleEdit
+	data-submit-create=personaGridData.submitLabelCreate
+	data-submit-update=personaGridData.submitLabelUpdate
+	data-cancel-label=personaGridData.cancelLabel
+	data-edit-label=personaGridData.editLabel
+	data-delete-label=personaGridData.deleteLabel
+	data-delete-confirm=personaGridData.deleteConfirm
+)
+	div(class='w-full max-w-[var(--container)] mx-auto')
+		h2(class='persona-grid__title mb-2 text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold')= personaGridData.title
+		p(class='persona-grid__lead mb-6 max-w-[42rem] text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]')= personaGridData.lead
+
+		h3(class='persona-grid__form-title mb-4 text-[length:var(--h3-size)] leading-[length:var(--h3-line)] font-semibold')= personaGridData.formTitleCreate
+		form(class='persona-grid__form mb-4 grid max-w-[32rem] gap-4', novalidate)
+			input(class='persona-grid__id', type='hidden', name='id', value='')
+			each field in personaGridData.fields
+				div(class='persona-grid__field flex flex-col gap-[0.35rem]')
+					label(
+						class='persona-grid__label text-[0.9375rem] font-semibold text-[var(--paragraph-color)]'
+						for=`persona-${field.name}`
+					)= field.label
+					input(
+						class='persona-grid__input w-full border border-neutral-300 bg-white px-4 py-3 font-inherit text-[var(--paragraph-color)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--first-color)]'
+						id=`persona-${field.name}`
+						name=field.name
+						type=field.type
+						placeholder=field.placeholder
+						required=field.required
+						min=field.min
+						max=field.max
+						step=field.step
+					)
+
+			div(class='persona-grid__actions mt-2 flex flex-wrap gap-3')
+				button(
+					class='persona-grid__submit inline-flex cursor-pointer items-center justify-center gap-2 border-2 border-[var(--btn-primary)] bg-[var(--btn-primary)] px-5 py-3.5 text-sm font-semibold tracking-wide text-[var(--btn-text)] uppercase no-underline transition-[background-color,border-color,color] duration-200 [@media(hover:hover)_and_(pointer:fine)]:hover:border-[var(--btn-primary-hover)] [@media(hover:hover)_and_(pointer:fine)]:hover:bg-[var(--btn-primary-hover)] [@media(hover:hover)_and_(pointer:fine)]:hover:no-underline'
+					type='submit'
+				)= personaGridData.submitLabelCreate
+				button(
+					class='persona-grid__cancel inline-flex cursor-pointer items-center justify-center gap-2 border-2 border-[var(--btn-secondary)] bg-[var(--btn-secondary)] px-5 py-3.5 text-sm font-semibold tracking-wide text-[var(--btn-text)] uppercase no-underline transition-[background-color,border-color,color] duration-200 [@media(hover:hover)_and_(pointer:fine)]:hover:border-[var(--btn-secondary-hover)] [@media(hover:hover)_and_(pointer:fine)]:hover:bg-[var(--btn-secondary-hover)] [@media(hover:hover)_and_(pointer:fine)]:hover:no-underline'
+					type='button'
+					hidden
+				)= personaGridData.cancelLabel
+
+		p(
+			class='persona-grid__status mb-6 font-semibold text-[length:var(--p-size)]'
+			role='status'
+		)= personaGridData.loadingMessage
+
+		div(class='persona-grid__toolbar mb-4 flex max-w-[64rem] flex-wrap items-baseline justify-between gap-x-4 gap-y-2')
+			h3(class='persona-grid__grid-title m-0 text-[length:var(--h3-size)] leading-[length:var(--h3-line)] font-semibold')= personaGridData.gridTitle
+			p(class='persona-grid__count m-0 text-[0.9375rem] text-neutral-600', hidden)
+
+		div(
+			class='persona-grid__grid mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 l:grid-cols-3'
+			aria-live='polite'
+		)
+
+		div(class='persona-grid__preview max-w-[64rem]', hidden)
+			h3(class='persona-grid__preview-title mb-3 text-[length:var(--h3-size)] leading-[length:var(--h3-line)] font-semibold')= personaGridData.previewTitle
+			pre(class='persona-grid__preview-code m-0 overflow-x-auto bg-[#1f2024] p-4 text-[0.8125rem] leading-normal text-[#f5f5f5]')
+				code(class='language-json')

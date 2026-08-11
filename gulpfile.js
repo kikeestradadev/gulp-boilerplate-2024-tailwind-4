@@ -359,7 +359,11 @@ gulp.task(
 		() =>
 			gulp
 				.src('src/images/**/*', { encoding: false, allowEmpty: true })
-				.pipe(gulp.dest('public/images'))
+				.pipe(gulp.dest('public/images')),
+		() =>
+			gulp
+				.src('src/data/**/*.json', { allowEmpty: true })
+				.pipe(gulp.dest('public/data'))
 	)
 );
 
@@ -404,7 +408,7 @@ gulp.task(
 		gulp.watch('src/js/**/*.js', debounce(gulp.series('scripts', reload), 120));
 		gulp.watch(
 			['src/data/**/*.json', 'src/md/**/*.md'],
-			debounce(gulp.series('pug', 'styles', reload), 120)
+			debounce(gulp.series('assets', 'pug', 'styles', reload), 120)
 		);
 		gulp.watch(
 			['src/assets/**/*', 'src/images/**/*'],

@@ -32,11 +32,11 @@ src/
   pug/       templates & components
   styles/    styles.css entry (Tailwind 4)
   js/        entry + modules/
-  data/      JSON for Pug (`{name}-data.json` → camelCase locals)
+  data/      JSON for Pug (`*-data.json`) + seeds fetch (`public/data/`)
   assets/    static files → public/assets
   images/    images → public/images
   md/        markdown includes
-public/      build output
+public/      build output (includes public/data from src/data)
 ```
 
 ## Notes
@@ -47,3 +47,4 @@ public/      build output
 - JS is bundled with esbuild (`scripts` task ~10 ms).
 - `npm audit` should report 0 vulnerabilities (overrides pin `markdown-it` / `linkify-it`).
 - Dev server is built-in (no BrowserSync): http://localhost:3000 with live reload.
+- **Static JSON CRUD demos:** seed `src/data/*.json` → `public/data/` → `fetch`; forms update a grid via `localStorage` in both `npm run dev` and GitHub Pages (per browser). See rule `static-json-data` and skill `create-static-json-module` (reference: `persona-grid`).

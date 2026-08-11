@@ -18,5 +18,6 @@ No omitas convenciones del proyecto por asumirlas. En especial:
 - Layout `--main-container` / `--container` (`layout-containers`)
 - Pug sintaxis larga + datos en `src/data/*-data.json` (`pug-long-syntax`, `pug-data-files`)
 - Módulos JS camelCase + Swiper CDN (`javascript-modules`, skill `create-slider-data`)
+- JSON seed + form/grilla CRUD Pages (`static-json-data`, skill `create-static-json-module`)
 
 El skill `review-rules-skills` detalla el mapa completo. Síguelo al inicio de cada tarea.

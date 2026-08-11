@@ -1,0 +1,70 @@
+---
+description: Datos fake con fetch seed + form/localStorage para grillas CRUD (dev y GitHub Pages)
+globs: "{src/pug/components/**/*.pug,src/js/modules/**/*.js,src/data/**/*.json}"
+alwaysApply: false
+---
+
+# JSON estático + form + grilla (simulación CRUD)
+
+Patrón del boilerplate para demos con **seed en JSON** y, si hay form, **mismo código en dev y GitHub Pages**.
+
+Estilos con **Tailwind 4**. Sin Sass ni partials SCSS.
+
+## Dos modos
+
+### A) Solo lectura (grilla)
+
+```
+src/data/*.json → public/data/ → fetch → UI
+```
+
+### B) CRUD form + grilla (`persona-grid`)
+
+```
+1. fetch seed → public/data/*.json (si no hay localStorage)
+2. localStorage[storageKey] → lista con id por registro
+3. Crear / Actualizar / Eliminar → write localStorage + re-render
+```
+
+- Create: Submit en modo crear.
+- Read: grilla de cards.
+- Update: Editar rellena el form; Submit guarda.
+- Delete: botón en card + confirm.
+- Mismo código en dev y GitHub Pages (por navegador).
+
+## Referencia canónica
+
+| Pieza | Ruta |
+|-------|------|
+| Seed | `src/data/persona.json` → `{ "personas": [ … ] }` |
+| Config UI | `src/data/persona-grid-data.json` → local `personaGridData` |
+| Markup | `src/pug/components/persona-grid.pug` |
+| JS | `src/js/modules/personaGrid.js` |
+
+Gulp: `assets` copia `src/data/**/*.json` → `public/data/`. Los `*-data.json` se inyectan a Pug (rule `pug-data-files`).
+
+## Comportamiento JS (modo B)
+
+1. Si existe `localStorage[storageKey]` → usarlo (asignar `id` si falta).
+2. Si no → `fetch(dataUrl)`, normalizar con `id`, guardar storage, pintar grilla.
+3. **Create** → append + `id` nuevo.
+4. **Update** → Editar carga form; Submit reemplaza por `id`.
+5. **Delete** → confirm + filtra por `id`.
+6. Sin API Gulp de escritura ni download.
+
+## Límites
+
+| | Dev / Pages |
+|--|-------------|
+| Ver seed + grilla | Sí |
+| Submit actualiza grilla | Sí (este browser) |
+| Otros visitantes ven lo que escribiste | No (localStorage por navegador) |
+| Escribe `src/data/persona.json` en el repo | No |
+
+## Reglas
+
+1. Skill `create-static-json-module` para módulos nuevos de este patrón.
+2. `data-url` + `data-storage-key` en la raíz del módulo.
+3. Markup: form arriba, grilla debajo (`aria-live` en la grilla).
+4. Anclas JS con clases estables (`persona-grid__*`); presentación con Tailwind y tokens `:root`.
+5. Registrar el módulo en `src/js/index.js` → `initComponents`.
