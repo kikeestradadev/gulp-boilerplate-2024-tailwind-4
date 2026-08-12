@@ -1,0 +1,72 @@
+-
+	const tutorInputClass = 'tutor-grid__input w-full border border-neutral-300 bg-white px-4 py-3 font-inherit text-[var(--paragraph-color)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--first-color)]'
+	const tutorBtnPrimary = 'tutor-grid__submit inline-flex cursor-pointer items-center justify-center gap-2 border-2 border-[var(--btn-primary)] bg-[var(--btn-primary)] px-5 py-3.5 text-sm font-semibold tracking-wide text-[var(--btn-text)] uppercase no-underline transition-[background-color,border-color,color] duration-200 [@media(hover:hover)_and_(pointer:fine)]:hover:border-[var(--btn-primary-hover)] [@media(hover:hover)_and_(pointer:fine)]:hover:bg-[var(--btn-primary-hover)] [@media(hover:hover)_and_(pointer:fine)]:hover:no-underline'
+	const tutorBtnSecondary = 'tutor-grid__cancel inline-flex cursor-pointer items-center justify-center gap-2 border-2 border-[var(--btn-secondary)] bg-[var(--btn-secondary)] px-5 py-3.5 text-sm font-semibold tracking-wide text-[var(--btn-text)] uppercase no-underline transition-[background-color,border-color,color] duration-200 [@media(hover:hover)_and_(pointer:fine)]:hover:border-[var(--btn-secondary-hover)] [@media(hover:hover)_and_(pointer:fine)]:hover:bg-[var(--btn-secondary-hover)] [@media(hover:hover)_and_(pointer:fine)]:hover:no-underline'
+
+section(
+	id='tutor-grid'
+	class='tutor-grid w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]'
+	data-url=tutorGridData.dataUrl
+	data-persona-url=tutorGridData.personaDataUrl
+	data-storage-key=tutorGridData.storageKey
+	data-error-message=tutorGridData.errorMessage
+	data-empty-list=tutorGridData.emptyList
+	data-loading-message=tutorGridData.loadingMessage
+	data-created-message=tutorGridData.createdMessage
+	data-updated-message=tutorGridData.updatedMessage
+	data-deleted-message=tutorGridData.deletedMessage
+	data-delete-blocked-message=tutorGridData.deleteBlockedMessage
+	data-count-label=tutorGridData.countLabel
+	data-form-title-create=tutorGridData.formTitleCreate
+	data-form-title-edit=tutorGridData.formTitleEdit
+	data-submit-create=tutorGridData.submitLabelCreate
+	data-submit-update=tutorGridData.submitLabelUpdate
+	data-cancel-label=tutorGridData.cancelLabel
+	data-edit-label=tutorGridData.editLabel
+	data-delete-label=tutorGridData.deleteLabel
+	data-delete-confirm=tutorGridData.deleteConfirm
+)
+	div(class='w-full max-w-[var(--container)] mx-auto')
+		h2(class='tutor-grid__title mb-2 text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold')= tutorGridData.title
+		p(class='tutor-grid__lead mb-6 max-w-[42rem] text-[length:var(--p-size)] leading-[length:var(--p-line)] text-[var(--paragraph-color)]')= tutorGridData.lead
+
+		h3(class='tutor-grid__form-title mb-4 text-[length:var(--h3-size)] leading-[length:var(--h3-line)] font-semibold')= tutorGridData.formTitleCreate
+		form(class='tutor-grid__form mb-4 grid max-w-[32rem] gap-4', novalidate)
+			input(class='tutor-grid__id', type='hidden', name='id', value='')
+			each field in tutorGridData.fields
+				div(class='tutor-grid__field flex flex-col gap-[0.35rem]')
+					label(
+						class='tutor-grid__label text-[0.9375rem] font-semibold text-[var(--paragraph-color)]'
+						for=`tutor-${field.name}`
+					)= field.label
+					input(
+						class=tutorInputClass
+						id=`tutor-${field.name}`
+						name=field.name
+						type=field.type
+						placeholder=field.placeholder
+						required=field.required
+					)
+
+			div(class='tutor-grid__actions mt-2 flex flex-wrap gap-3')
+				button(class=tutorBtnPrimary, type='submit')= tutorGridData.submitLabelCreate
+				button(class=tutorBtnSecondary, type='button', hidden)= tutorGridData.cancelLabel
+
+		p(
+			class='tutor-grid__status mb-6 font-semibold text-[length:var(--p-size)]'
+			role='status'
+		)= tutorGridData.loadingMessage
+
+		div(class='tutor-grid__toolbar mb-4 flex max-w-[64rem] flex-wrap items-baseline justify-between gap-x-4 gap-y-2')
+			h3(class='tutor-grid__grid-title m-0 text-[length:var(--h3-size)] leading-[length:var(--h3-line)] font-semibold')= tutorGridData.gridTitle
+			p(class='tutor-grid__count m-0 text-[0.9375rem] text-neutral-600', hidden)
+
+		div(
+			class='tutor-grid__grid mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 l:grid-cols-3'
+			aria-live='polite'
+		)
+
+		div(class='tutor-grid__preview max-w-[64rem]', hidden)
+			h3(class='tutor-grid__preview-title mb-3 text-[length:var(--h3-size)] leading-[length:var(--h3-line)] font-semibold')= tutorGridData.previewTitle
+			pre(class='tutor-grid__preview-code m-0 overflow-x-auto bg-[#1f2024] p-4 text-[0.8125rem] leading-normal text-[#f5f5f5]')
+				code(class='language-json')

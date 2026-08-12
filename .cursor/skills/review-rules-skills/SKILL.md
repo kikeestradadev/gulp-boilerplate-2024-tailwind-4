@@ -30,6 +30,7 @@ No implementes “de memoria”. Omisiones tipicas: sintaxis Pug corta, shells s
 | Plantillas Pug                                     | `pug-long-syntax` (rule + skill), `pug-data-files` |
 | Datos de componentes / sliders                     | `pug-data-files`, skill `create-slider-data`       |
 | JSON seed + CRUD form/grilla (Pages)               | `static-json-data`, skill `create-static-json-module` |
+| Emulación BD / seeds / store / FK / JOIN           | `emulated-db`, skill `emulated-db` (`src/data/db/` + `src/js/db/`) |
 | Sliders / Swiper                                   | `create-slider-data` + `javascript-modules`        |
 | JS en `src/js`                                     | `javascript-modules`                               |
 

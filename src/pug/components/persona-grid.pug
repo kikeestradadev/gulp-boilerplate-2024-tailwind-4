@@ -1,7 +1,13 @@
+-
+	const personaInputClass = 'persona-grid__input w-full border border-neutral-300 bg-white px-4 py-3 font-inherit text-[var(--paragraph-color)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--first-color)]'
+	const personaBtnPrimary = 'persona-grid__submit inline-flex cursor-pointer items-center justify-center gap-2 border-2 border-[var(--btn-primary)] bg-[var(--btn-primary)] px-5 py-3.5 text-sm font-semibold tracking-wide text-[var(--btn-text)] uppercase no-underline transition-[background-color,border-color,color] duration-200 [@media(hover:hover)_and_(pointer:fine)]:hover:border-[var(--btn-primary-hover)] [@media(hover:hover)_and_(pointer:fine)]:hover:bg-[var(--btn-primary-hover)] [@media(hover:hover)_and_(pointer:fine)]:hover:no-underline'
+	const personaBtnSecondary = 'persona-grid__cancel inline-flex cursor-pointer items-center justify-center gap-2 border-2 border-[var(--btn-secondary)] bg-[var(--btn-secondary)] px-5 py-3.5 text-sm font-semibold tracking-wide text-[var(--btn-text)] uppercase no-underline transition-[background-color,border-color,color] duration-200 [@media(hover:hover)_and_(pointer:fine)]:hover:border-[var(--btn-secondary-hover)] [@media(hover:hover)_and_(pointer:fine)]:hover:bg-[var(--btn-secondary-hover)] [@media(hover:hover)_and_(pointer:fine)]:hover:no-underline'
+
 section(
 	id='persona-grid'
 	class='persona-grid w-full max-w-[var(--main-container)] mx-auto px-[15px] border border-[steelblue]'
 	data-url=personaGridData.dataUrl
+	data-tutor-url=personaGridData.tutorDataUrl
 	data-storage-key=personaGridData.storageKey
 	data-error-message=personaGridData.errorMessage
 	data-empty-list=personaGridData.emptyList
@@ -18,6 +24,8 @@ section(
 	data-edit-label=personaGridData.editLabel
 	data-delete-label=personaGridData.deleteLabel
 	data-delete-confirm=personaGridData.deleteConfirm
+	data-tutor-empty-option=personaGridData.tutorEmptyOption
+	data-tutor-card-label=personaGridData.tutorCardLabel
 )
 	div(class='w-full max-w-[var(--container)] mx-auto')
 		h2(class='persona-grid__title mb-2 text-[length:var(--h2-size)] leading-[length:var(--h2-line)] font-bold')= personaGridData.title
@@ -32,28 +40,30 @@ section(
 						class='persona-grid__label text-[0.9375rem] font-semibold text-[var(--paragraph-color)]'
 						for=`persona-${field.name}`
 					)= field.label
-					input(
-						class='persona-grid__input w-full border border-neutral-300 bg-white px-4 py-3 font-inherit text-[var(--paragraph-color)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--first-color)]'
-						id=`persona-${field.name}`
-						name=field.name
-						type=field.type
-						placeholder=field.placeholder
-						required=field.required
-						min=field.min
-						max=field.max
-						step=field.step
-					)
+					if field.type === 'select'
+						select(
+							class=`persona-grid__select ${personaInputClass}`
+							id=`persona-${field.name}`
+							name=field.name
+							required=field.required
+						)
+							option(value='')= personaGridData.tutorEmptyOption
+					else
+						input(
+							class=personaInputClass
+							id=`persona-${field.name}`
+							name=field.name
+							type=field.type
+							placeholder=field.placeholder
+							required=field.required
+							min=field.min
+							max=field.max
+							step=field.step
+						)
 
 			div(class='persona-grid__actions mt-2 flex flex-wrap gap-3')
-				button(
-					class='persona-grid__submit inline-flex cursor-pointer items-center justify-center gap-2 border-2 border-[var(--btn-primary)] bg-[var(--btn-primary)] px-5 py-3.5 text-sm font-semibold tracking-wide text-[var(--btn-text)] uppercase no-underline transition-[background-color,border-color,color] duration-200 [@media(hover:hover)_and_(pointer:fine)]:hover:border-[var(--btn-primary-hover)] [@media(hover:hover)_and_(pointer:fine)]:hover:bg-[var(--btn-primary-hover)] [@media(hover:hover)_and_(pointer:fine)]:hover:no-underline'
-					type='submit'
-				)= personaGridData.submitLabelCreate
-				button(
-					class='persona-grid__cancel inline-flex cursor-pointer items-center justify-center gap-2 border-2 border-[var(--btn-secondary)] bg-[var(--btn-secondary)] px-5 py-3.5 text-sm font-semibold tracking-wide text-[var(--btn-text)] uppercase no-underline transition-[background-color,border-color,color] duration-200 [@media(hover:hover)_and_(pointer:fine)]:hover:border-[var(--btn-secondary-hover)] [@media(hover:hover)_and_(pointer:fine)]:hover:bg-[var(--btn-secondary-hover)] [@media(hover:hover)_and_(pointer:fine)]:hover:no-underline'
-					type='button'
-					hidden
-				)= personaGridData.cancelLabel
+				button(class=personaBtnPrimary, type='submit')= personaGridData.submitLabelCreate
+				button(class=personaBtnSecondary, type='button', hidden)= personaGridData.cancelLabel
 
 		p(
 			class='persona-grid__status mb-6 font-semibold text-[length:var(--p-size)]'

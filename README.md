@@ -47,4 +47,4 @@ public/      build output (includes public/data from src/data)
 - JS is bundled with esbuild (`scripts` task ~10 ms).
 - `npm audit` should report 0 vulnerabilities (overrides pin `markdown-it` / `linkify-it`).
 - Dev server is built-in (no BrowserSync): http://localhost:3000 with live reload.
-- **Static JSON CRUD demos:** seed `src/data/*.json` → `public/data/` → `fetch`; forms update a grid via `localStorage` in both `npm run dev` and GitHub Pages (per browser). See rule `static-json-data` and skill `create-static-json-module` (reference: `persona-grid`).
+- **Static JSON demos:** table seeds in `src/data/db/*.json` → `public/data/db/` → `fetch`. Interactive forms append via `localStorage` so the grid updates on Submit in both `npm run dev` and GitHub Pages (per browser). See rules `static-json-data` / `emulated-db` and skills `create-static-json-module` / `emulated-db`.
